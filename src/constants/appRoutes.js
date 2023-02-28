@@ -1,5 +1,6 @@
 export const APP_ROUTES = {
     HOME_PAGE: "/",
-    SIGN_IN: "/signIn",
+    LOGIN: "/login",
     PROFILE_PAGE: "/profile",
+    NOT_FOUND: "*",
 };

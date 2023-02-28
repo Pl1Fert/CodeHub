@@ -1,12 +1,10 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import { MainRouter } from "./routers";
 
 const App = () => {
     return (
-        <BrowserRouter>
-            <MainRouter />
-        </BrowserRouter>
+        <RouterProvider router={MainRouter} />
     );
 };
 
