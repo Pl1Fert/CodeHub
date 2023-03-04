@@ -1,6 +1,7 @@
+import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
+
 import { APP_ROUTES } from "../constants";
 import { HomePage, LoginPage, ProfilePage, NotFoundPage, ErrorPage } from "../pages";
-import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 import { RequireAuth } from "../hoc/requireAuth";
 
 export const MainRouter = createBrowserRouter(

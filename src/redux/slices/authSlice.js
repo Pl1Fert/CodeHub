@@ -1,8 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-import { login, register } from "../../api";
+import { AuthService } from "../../services";
 
 const tokens = JSON.parse(localStorage.getItem("tokens"));
+
+export const register = createAsyncThunk("auth/register", async ({ email, password }, thunkAPI) => {
+    try {
+        const response = await AuthService.register(email, password);
+        return response.data;
+    } catch (e) {
+        return thunkAPI.rejectWithValue();
+    }
+});
+
+export const login = createAsyncThunk("auth/login", async ({ email, password }, thunkAPI) => {
+    try {
+        const response = await AuthService.login(email, password);
+        return response.data;
+    } catch (e) {
+        return thunkAPI.rejectWithValue();
+    }
+});
 
 const initialState = tokens ? { isLoggedIn: true, tokens } : { isLoggedIn: false, tokens: null };
 
