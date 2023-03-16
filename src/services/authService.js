@@ -3,10 +3,19 @@ import axios from "axios";
 import { API_URLS } from "../constants";
 
 const register = (email, password) => {
-    return axios.post(API_URLS.REGISTER, {
-        email,
-        password,
-    });
+    return axios.post(
+        API_URLS.REGISTER,
+        {
+            email,
+            password,
+        },
+        //TODO: mb not needed
+        {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }
+    );
 };
 
 const login = (email, password) => {
@@ -19,6 +28,8 @@ const login = (email, password) => {
             if (!response.data.detail) {
                 localStorage.setItem("tokens", JSON.stringify(response.data));
             }
+
+            return response.data;
         });
 };
 

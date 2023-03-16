@@ -15,8 +15,8 @@ export const register = createAsyncThunk("auth/register", async ({ email, passwo
 
 export const login = createAsyncThunk("auth/login", async ({ email, password }, thunkAPI) => {
     try {
-        const response = await AuthService.login(email, password);
-        return response.data;
+        const tokens = await AuthService.login(email, password);
+        return { tokens };
     } catch (e) {
         return thunkAPI.rejectWithValue();
     }
@@ -46,6 +46,6 @@ const authSlice = createSlice({
     },
 });
 
-const { reducer } = authSlice;
+export const { reducer } = authSlice;
 
 export default reducer;

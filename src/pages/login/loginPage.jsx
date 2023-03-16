@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import { loginSchema, registerSchema } from "../../validators";
+import { register, login } from "../../redux/slices/authSlice";
+import { APP_ROUTES } from "../../constants";
 
 import styles from "./loginPage.module.scss";
 
 export const LoginPage = () => {
     const [isRightPanelActive, setIsRightPanelActive] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { isLoggedIn } = useSelector((state) => state.auth);
 
     const {
         register: loginFormRegister,
@@ -31,12 +38,19 @@ export const LoginPage = () => {
     } = useForm({ mode: "onBlur", resolver: yupResolver(registerSchema) });
 
     const onLoginSubmit = (data) => {
-        console.log(data);
+        dispatch(login(data)).then(() => {
+            navigate(APP_ROUTES.HOME_PAGE);
+        });
         resetAllForms();
     };
 
     const onRegisterSubmit = (data) => {
-        console.log(data);
+        dispatch(register(data));
+        //TODO: mb dont needed
+
+        // dispatch(login(data)).then(() => {
+        //     navigate(APP_ROUTES.HOME_PAGE, {replace: true});
+        // });
         resetAllForms();
     };
 
@@ -49,6 +63,8 @@ export const LoginPage = () => {
         setIsRightPanelActive((prev) => !prev);
         resetAllForms();
     };
+
+    if (isLoggedIn) return <Navigate to={APP_ROUTES.HOME_PAGE} replace />;
 
     return (
         <section className={styles.loginPage}>
