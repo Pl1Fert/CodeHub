@@ -6,8 +6,8 @@ import { RequireAuth } from "../hoc/requireAuth";
 
 export const MainRouter = createBrowserRouter(
     createRoutesFromElements(
-        <Route path={APP_ROUTES.HOME_PAGE} errorElement={<ErrorPage/>}>
-            <Route element={<RequireAuth/>}>
+        <Route path={APP_ROUTES.HOME_PAGE} errorElement={<ErrorPage />}>
+            <Route element={<RequireAuth />}>
                 <Route index element={<HomePage />} />
                 <Route path={APP_ROUTES.PROFILE_PAGE} element={<ProfilePage />} />
             </Route>

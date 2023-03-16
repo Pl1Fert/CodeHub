@@ -60,6 +60,7 @@
     color: $white;
 
     cursor: pointer;
+    transition: all .3s linear;
 
     &:hover {
         background-color: $light-blue;
@@ -101,7 +102,6 @@
 }
 
 ::placeholder {
-    /* Most modern browsers support this now. */
     color: $black;
     opacity: 0.2;
 }
@@ -262,6 +262,7 @@
     color: $white;
 
     cursor: pointer;
+    transition: all .3s linear;
 
     &:hover {
         background-color: $very-light-blue;
