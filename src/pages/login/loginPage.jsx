@@ -59,7 +59,7 @@ export const LoginPage = () => {
         resetLoginForm();
     };
 
-    const onClick = () => {
+    const onPanelButtonClick = () => {
         setIsRightPanelActive((prev) => !prev);
         resetAllForms();
     };
@@ -162,7 +162,7 @@ export const LoginPage = () => {
                             <button
                                 type="button"
                                 className={styles.overlayButton}
-                                onClick={onClick}>
+                                onClick={onPanelButtonClick}>
                                 sign in
                             </button>
                         </div>
@@ -174,7 +174,7 @@ export const LoginPage = () => {
                             <button
                                 type="button"
                                 className={styles.overlayButton}
-                                onClick={onClick}>
+                                onClick={onPanelButtonClick}>
                                 sign up
                             </button>
                         </div>
