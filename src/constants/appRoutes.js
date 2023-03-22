@@ -1,6 +1,8 @@
 export const APP_ROUTES = {
-    HOME_PAGE: "/",
+    HOME: "/",
     LOGIN: "login",
-    PROFILE_PAGE: "profile",
+    PROFILE: "profile",
+    REPOSITORIES: "repositories",
+    REPOSITORY: "repositories/:id",
     NOT_FOUND: "*",
 };

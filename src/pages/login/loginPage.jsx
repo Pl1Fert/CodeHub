@@ -7,6 +7,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { loginSchema, registerSchema } from "../../validators";
 import { register, login } from "../../redux/slices/authSlice";
 import { APP_ROUTES } from "../../constants";
+import { getUser } from "../../redux/slices/userSlice";
 
 import styles from "./loginPage.module.scss";
 
@@ -38,19 +39,18 @@ export const LoginPage = () => {
     } = useForm({ mode: "onBlur", resolver: yupResolver(registerSchema) });
 
     const onLoginSubmit = (data) => {
-        dispatch(login(data)).then(() => {
-            navigate(APP_ROUTES.HOME_PAGE);
-        });
+        dispatch(login(data))
+            .then(() => {
+                dispatch(getUser());
+            })
+            .then(() => {
+                navigate(APP_ROUTES.HOME_PAGE);
+            });
         resetAllForms();
     };
 
     const onRegisterSubmit = (data) => {
         dispatch(register(data));
-        //TODO: mb dont needed
-
-        // dispatch(login(data)).then(() => {
-        //     navigate(APP_ROUTES.HOME_PAGE, {replace: true});
-        // });
         resetAllForms();
     };
 
@@ -64,7 +64,7 @@ export const LoginPage = () => {
         resetAllForms();
     };
 
-    if (isLoggedIn) return <Navigate to={APP_ROUTES.HOME_PAGE} replace />;
+    if (isLoggedIn) return <Navigate to={APP_ROUTES.HOME} replace />;
 
     return (
         <section className={styles.loginPage}>

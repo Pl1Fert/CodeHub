@@ -1,10 +1,18 @@
-import React from 'react';
+import React from "react";
 
-import styles from './navList.module.scss';
+import { NAV_LINKS } from "../../constants/navLinks";
+import { NavItem } from "../navItem/navItem";
 
-export const NavList = () => (
-  <div className={styles.NavList}>
-    NavList Component
-  </div>
-);
+import styles from "./navList.module.scss";
 
+export const NavList = () => {
+    return (
+        <nav className={styles.NavList}>
+            {NAV_LINKS.map((item) => (
+                <NavItem key={item.id} to={`/${item.linkName}`}>
+                    {item.linkName}
+                </NavItem>
+            ))}
+        </nav>
+    );
+};

@@ -4,3 +4,5 @@ export * from "./repositoryFilter";
 export * from "./header";
 export * from "./navList";
 export * from "./navItem";
+export * from "./layout";
+export * from "./searchBar";

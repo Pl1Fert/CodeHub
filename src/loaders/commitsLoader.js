@@ -2,18 +2,18 @@ import axios from "axios";
 
 import { API_URLS } from "../constants";
 
-const getRepositories = async () => {
+const getCommits = async () => {
     try {
         const response = await axios
-            .get(API_URLS.REPOSITORIES);
+            .get(API_URLS.COMMITS);
         return response.data;
     } catch (error) {
         console.log({ ...error });
     }
 };
 
-export const repositoriesLoader = async () => {
-    const repositories = await getRepositories();
+export const commitsLoader = async () => {
+    const commits = await getCommits();
 
-    return repositories;
+    return commits;
 };
