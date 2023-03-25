@@ -109,17 +109,17 @@ export const LoginPage = () => {
                     </form>
                 </div>
                 <div className={`${styles.formContainer} + ${styles.registerContainer}`}>
-                    <form key={1} onSubmit={handleRegisterFormSubmit(onRegisterSubmit)}>
+                    <form key={2} onSubmit={handleRegisterFormSubmit(onRegisterSubmit)}>
                         <h1 className={styles.title}>Create Account</h1>
                         <input
                             type="text"
-                            placeholder="Please enter your nickname"
+                            placeholder="Please enter your username"
                             className={styles.input}
-                            {...registerFormRegister("nickname")}
+                            {...registerFormRegister("username")}
                         />
                         <div className={styles.error}>
-                            {registerFormErrors?.nickname && (
-                                <p>{registerFormErrors?.nickname?.message || "Error!"}</p>
+                            {registerFormErrors?.username && (
+                                <p>{registerFormErrors?.username?.message || "Error!"}</p>
                             )}
                         </div>
                         <input

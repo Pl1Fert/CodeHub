@@ -1,1 +1,29 @@
-.NavItem {}
+@import "../../styles/colors";
+
+.navItem {
+
+    color: $white;
+
+    transition: all 0.3s linear;
+
+    &::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 2px;
+        background: $white;
+        transition: all 0.3s linear;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
+}
+
+.navItem_active {
+
+    color: $very-light-blue;
+
+    cursor: default;
+    pointer-events: none;
+}

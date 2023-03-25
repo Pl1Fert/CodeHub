@@ -25,22 +25,22 @@ export const Header = () => {
     };
 
     return (
-        <header className={styles.Header}>
+        <header className={styles.header}>
             <Link to={APP_ROUTES.HOME}>
                 <img src={logo} alt="logo" />
             </Link>
             <NavList />
-            <div className="buttons">
+            <div className={styles.buttons}>
                 {darkMode ? (
-                    <button type="button" onClick={onChangeMode} className="modeButton">
+                    <button type="button" onClick={onChangeMode} className={styles.modeButton}>
                         <img src={iconSun} alt="iconSun" />
                     </button>
                 ) : (
-                    <button type="button" onClick={onChangeMode} className="modeButton">
+                    <button type="button" onClick={onChangeMode} className={styles.modeButton}>
                         <img src={iconMoon} alt="iconMoon" />
                     </button>
                 )}
-                <button type="button" onClick={onLogoutClick}>
+                <button type="button" onClick={onLogoutClick} className={styles.logoutButton}>
                     Log Out
                 </button>
             </div>

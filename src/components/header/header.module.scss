@@ -1,1 +1,54 @@
-.Header {}
+@import "../../styles/fonts";
+@import "../../styles/colors";
+
+.header {
+    padding: 10px 40px;
+
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    background-color: $blue;
+}
+
+.buttons {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    button {
+        border: none;
+
+        font: inherit;
+        color: $white;
+
+        outline: none;
+        background-color: transparent;
+
+        cursor: pointer;
+    }
+}
+
+.logoutButton { 
+
+    transition: all .3s linear;
+
+    &::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 2px;
+        background: $white;
+        transition: all 0.3s linear;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
+}
+
+.modeButton {
+    margin-top: 5px;
+}

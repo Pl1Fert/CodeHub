@@ -7,9 +7,9 @@ import styles from "./navList.module.scss";
 
 export const NavList = () => {
     return (
-        <nav className={styles.NavList}>
+        <nav className={styles.navList}>
             {NAV_LINKS.map((item) => (
-                <NavItem key={item.id} to={`/${item.linkName}`}>
+                <NavItem key={item.id} to={`/${item.linkDest}`}>
                     {item.linkName}
                 </NavItem>
             ))}

@@ -2,35 +2,26 @@ import axios from "axios";
 
 import { API_URLS } from "../constants";
 
-const register = (email, password) => {
-    return axios.post(
-        API_URLS.REGISTER,
-        {
-            email,
-            password,
-        },
-        //TODO: mb not needed
-        {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }
-    );
+const register = (email, password, username) => {
+    return axios.post(API_URLS.REGISTER, {
+        email,
+        password,
+        username,
+    });
 };
 
-const login = (email, password) => {
-    return axios
+const login = async (email, password) => {
+    const response = await axios
         .post(API_URLS.LOGIN, {
             email,
             password,
-        })
-        .then((response) => {
-            if (!response.data.detail) {
-                localStorage.setItem("tokens", JSON.stringify(response.data));
-            }
-
-            return response.data;
         });
+        
+    if (!response.data.detail) {
+        localStorage.setItem("tokens", JSON.stringify(response.data));
+    }
+
+    return response.data;
 };
 
 const logout = () => {

@@ -12,10 +12,7 @@ export const NavItem = ({ children, to, ...props }) => {
     return (
         <Link
             to={to}
-            style={{
-                color: match ? "blue" : "black",
-            }}
-            className={styles.navItem}
+            className={match ? `${styles.navItem} + ${styles.navItem_active}`  : `${styles.navItem}`}
             {...props}>
             {children}
         </Link>

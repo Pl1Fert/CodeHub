@@ -5,7 +5,7 @@ import { UserService } from "../../services/userService";
 const initialState = {
     id: null,
     email: "",
-    nickname: "",
+    username: "",
     img: "",
     isBlocked: false,
 };
