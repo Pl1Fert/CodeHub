@@ -19,22 +19,18 @@ export const MainRouter = createBrowserRouter(
         <Route path={APP_ROUTES.HOME} errorElement={<ErrorPage />}>
             <Route element={<RequireAuth />}>
                 <Route element={<Layout />}>
-                    <Route
-                        index
-                        element={<HomePage />}
-                        // loader={repositoriesLoader}
-                    />
+                    <Route index element={<HomePage />} loader={repositoriesLoader} />
                     <Route path={APP_ROUTES.PROFILE} element={<ProfilePage />} />
+                    <Route path={APP_ROUTES.REPOSITORIES} element={<RepositoriesPage />} />
                     <Route
-                        path={APP_ROUTES.REPOSITORIES}
-                        element={<RepositoriesPage />}
-                        // loader={commitsLoader} TODO: mb move it to commitsPage
+                        path={APP_ROUTES.REPOSITORY}
+                        element={<RepositoryPage />}
+                        loader={commitsLoader}
                     />
-                    <Route path={APP_ROUTES.REPOSITORY} element={<RepositoryPage />} />
                 </Route>
             </Route>
             <Route path={APP_ROUTES.LOGIN} element={<LoginPage />} />
             <Route path={APP_ROUTES.NOT_FOUND} element={<NotFoundPage />} />
-        </Route>
-    )
+        </Route>,
+    ),
 );
