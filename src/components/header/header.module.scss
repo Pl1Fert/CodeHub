@@ -3,12 +3,18 @@
 
 .header {
     padding: 10px 40px;
+    border-bottom: 2px solid transparent;
 
     display: flex;
     align-items: center;
     gap: 40px;
 
     background-color: $blue;
+
+    &_dark {
+        background-color: $dark-theme-bg;
+        border-color: $black;
+    }
 }
 
 .buttons {
@@ -31,9 +37,8 @@
     }
 }
 
-.logoutButton { 
-
-    transition: all .3s linear;
+.logoutButton {
+    transition: all 0.3s linear;
 
     &::after {
         content: "";

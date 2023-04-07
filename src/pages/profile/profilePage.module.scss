@@ -1,0 +1,10 @@
+@import "../../styles/colors";
+
+.main {
+    height: 100vh;
+}
+
+.main_dark {
+    background-color: $dark-theme-bg;
+    color: $white;
+}

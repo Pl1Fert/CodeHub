@@ -15,6 +15,9 @@ import styles from "./header.module.scss";
 export const Header = () => {
     const dispatch = useDispatch();
     const { darkMode } = useSelector((state) => state.mode);
+    const headerStyles = [styles.header];
+
+    darkMode ? headerStyles.push(styles.header_dark) : null;
 
     const onLogoutClick = () => {
         dispatch(logout());
@@ -25,7 +28,7 @@ export const Header = () => {
     };
 
     return (
-        <header className={styles.header}>
+        <header className={headerStyles.join(" ")}>
             <Link to={APP_ROUTES.HOME}>
                 <img src={logo} alt="logo" />
             </Link>
