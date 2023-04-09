@@ -7,14 +7,17 @@ import styles from "./profilePage.module.scss";
 
 export const ProfilePage = () => {
     const { darkMode } = useSelector((state) => state.mode);
-    const user = useSelector((state) => state.user);
+    const { user, isFetched } = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
     const mainStyles = [styles.main];
     darkMode ? mainStyles.push(styles.main_dark) : null;
 
     useEffect(() => {
-        dispatch(getUser());
+        if (isFetched === false) {
+            dispatch(getUser());
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

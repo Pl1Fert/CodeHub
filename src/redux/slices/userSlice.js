@@ -3,11 +3,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { UserService } from "../../services";
 
 const initialState = {
-    id: null,
-    email: "",
-    username: "",
-    img: "",
-    isBlocked: false,
+    user: {
+        id: null,
+        email: "",
+        username: "",
+        img: "",
+        isBlocked: false,
+    },
+    isFetched: false,
 };
 
 export const getUser = createAsyncThunk("user/getUser", async (thunkAPI) => {
@@ -24,8 +27,13 @@ const userSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        [getUser.fulfilled]: (state, action) => (state = { ...action.payload }),
-        [getUser.rejected]: (state) => (state = { ...state }),
+        [getUser.fulfilled]: (state, action) => {
+            state.user = { ...action.payload };
+            state.isFetched = true;
+        },
+        [getUser.rejected]: (state) => {
+            state.user = { ...state };
+        },
     },
 });
 
