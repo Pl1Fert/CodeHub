@@ -15,7 +15,7 @@ export const LoginPage = () => {
     const [isRightPanelActive, setIsRightPanelActive] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { isLoggedIn } = useSelector((state) => state.auth);
+    const auth = useSelector((state) => state.auth);
 
     const {
         register: loginFormRegister,
@@ -64,7 +64,7 @@ export const LoginPage = () => {
         resetAllForms();
     };
 
-    if (isLoggedIn) return <Navigate to={APP_ROUTES.HOME} replace />;
+    if (auth.isLoggedIn) return <Navigate to={APP_ROUTES.HOME} replace />;
 
     return (
         <section className={styles.loginPage}>
@@ -99,7 +99,6 @@ export const LoginPage = () => {
                                 <p>{loginFormErrors?.password?.message || "Error!"}</p>
                             )}
                         </div>
-
                         <input
                             type="submit"
                             className={styles.submit}
@@ -144,6 +143,12 @@ export const LoginPage = () => {
                                 <p>{registerFormErrors?.password?.message || "Error!"}</p>
                             )}
                         </div>
+                        {/* TODO: need to clear after panel button click */}
+                        {auth.message !== "" ? (
+                            <p className={styles.errorMessage}>
+                                {auth.message.charAt(0).toUpperCase() + auth.message.slice(1)}
+                            </p>
+                        ) : null}
                         <input
                             type="submit"
                             className={styles.submit}

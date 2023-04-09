@@ -1,10 +1,15 @@
-import axios from "axios";
-axios.defaults.withCredentials = true;
-
+import { axiosAPI } from "../api";
 import { API_URLS } from "../constants";
 
-const getUser = () => {
-    return axios.get(API_URLS.USER);
+const getUser = async () => {
+    const response = await axiosAPI.sendRequest(API_URLS.USER, "get");
+
+    switch (response.status) {
+        case 200:
+            return response.data;
+        default:
+            break;
+    }
 };
 
 export const UserService = {

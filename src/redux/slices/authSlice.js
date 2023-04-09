@@ -2,30 +2,34 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import { AuthService } from "../../services";
 
-const tokens = JSON.parse(localStorage.getItem("tokens"));
+const tokens =
+    localStorage.getItem("tokens") !== undefined
+        ? JSON.parse(localStorage.getItem("tokens"))
+        : null;
 
 export const register = createAsyncThunk(
     "auth/register",
     async ({ email, password, username }, thunkAPI) => {
         try {
-            const response = await AuthService.register(email, password, username);
-            return response.data;
+            const data = await AuthService.register(email, password, username);
+            return data;
         } catch (e) {
             return thunkAPI.rejectWithValue();
         }
-    }
+    },
 );
 
 export const login = createAsyncThunk("auth/login", async ({ email, password }, thunkAPI) => {
     try {
-        const tokens = await AuthService.login(email, password);
-        return { tokens };
+        await AuthService.login(email, password);
     } catch (e) {
         return thunkAPI.rejectWithValue();
     }
 });
 
-const initialState = tokens ? { isLoggedIn: true, tokens } : { isLoggedIn: false, tokens: null };
+const initialState = tokens
+    ? { isLoggedIn: true, message: "" }
+    : { isLoggedIn: false, message: "" };
 
 const authSlice = createSlice({
     name: "auth",
@@ -34,23 +38,22 @@ const authSlice = createSlice({
         logout: (state) => {
             AuthService.logout();
             state.isLoggedIn = false;
-            state.tokens = null;
         },
     },
     extraReducers: {
-        [login.fulfilled]: (state, action) => {
+        [login.fulfilled]: (state) => {
             state.isLoggedIn = true;
-            state.tokens = action.payload.tokens;
         },
         [login.rejected]: (state) => {
             state.isLoggedIn = false;
-            state.tokens = null;
         },
-        [register.fulfilled]: (state) => {
+        [register.fulfilled]: (state, action) => {
             state.isLoggedIn = false;
+            state.message = action.payload;
         },
-        [register.rejected]: (state) => {
+        [register.rejected]: (state, action) => {
             state.isLoggedIn = false;
+            state.message = action.payload;
         },
     },
 });

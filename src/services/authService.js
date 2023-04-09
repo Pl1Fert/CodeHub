@@ -1,32 +1,39 @@
-import axios from "axios";
-import Cookies from "universal-cookie";
+import { axiosAPI } from "../api";
+import { API_URLS, COOKIES } from "../constants";
 
-import { API_URLS } from "../constants";
+import { CookieService } from "./cookieService";
 
-const register = (email, password, username) => {
-    return axios.post(API_URLS.REGISTER, {
+const register = async (email, password, username) => {
+    const response = await axiosAPI.sendRequest(API_URLS.REGISTER, "post", {
         email,
         password,
         username,
     });
+
+    switch (response.status) {
+        case 400:
+            return response.data.email[0];
+        case 201:
+            return response.statusText;
+        default:
+            return "";
+    }
 };
 
 const login = async (email, password) => {
-    const response = await axios.post(API_URLS.LOGIN, {
+    const response = await axiosAPI.sendRequest(API_URLS.LOGIN, "post", {
         email,
         password,
     });
 
-    if (!response.data.detail) {
-        localStorage.setItem("tokens", JSON.stringify(response.data));
+    //TODO: mb make check on data detail and return it
 
-        const cookies = new Cookies();
+    if (!response.detail) {
+        localStorage.setItem("tokens", JSON.stringify(response));
 
-        cookies.set("refresh-token", response.data["refresh-token"], { path: "/" });
-        cookies.set("access-token", response.data["access-token"], { path: "/" });
+        CookieService.setCookie(COOKIES.NAMES.REFRESH_TOKEN, response[COOKIES.NAMES.REFRESH_TOKEN]);
+        CookieService.setCookie(COOKIES.NAMES.ACCESS_TOKEN, response[COOKIES.NAMES.ACCESS_TOKEN]);
     }
-
-    return response.data;
 };
 
 const logout = () => {

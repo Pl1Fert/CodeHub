@@ -20,6 +20,7 @@ export const MainRouter = createBrowserRouter(
             <Route element={<RequireAuth />}>
                 <Route element={<Layout />}>
                     <Route index element={<HomePage />} loader={repositoriesLoader} />
+                    {/* TODO: mb need to create userLoader */}
                     <Route path={APP_ROUTES.PROFILE} element={<ProfilePage />} />
                     <Route path={APP_ROUTES.REPOSITORIES} element={<RepositoriesPage />} />
                     <Route

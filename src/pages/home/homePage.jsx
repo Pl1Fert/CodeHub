@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import { useSelector } from "react-redux";
-
 import { Await, useLoaderData } from "react-router-dom";
 
 import { LoaderSpinner } from "../../components";
