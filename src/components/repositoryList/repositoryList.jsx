@@ -3,8 +3,6 @@ import React from "react";
 import { RepositoryLink } from "../repositoryLink";
 import { APP_ROUTES } from "../../constants";
 
-import styles from "./repositoryList.module.scss";
-
 export const RepositoryList = ({ className, repositories }) => (
     <ul className={className}>
         {repositories.length !== 0 ? (
@@ -16,7 +14,7 @@ export const RepositoryList = ({ className, repositories }) => (
                 </li>
             ))
         ) : (
-            <p>no repositories</p>
+            <p style={{ textAlign: "center" }}>No Repositories</p>
         )}
     </ul>
 );

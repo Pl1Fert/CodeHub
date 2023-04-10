@@ -1,1 +1,30 @@
-.RepositoryLink {}
+@import "../../styles/colors";
+
+.repositoryLink {
+    padding-bottom: 1px;
+    border-bottom: 2px solid transparent;
+
+    color: $blue-font;
+
+    transition: all 0.3s linear;
+
+    &:hover {
+        border-color: $blue;
+    }
+
+    &:visited {
+        color: $blue-font;
+    }
+
+    &_dark {
+        color: $white;
+
+        &:visited {
+            color: $white;
+        }
+
+        &:hover {
+            border-color: $white;
+        }
+    }
+}

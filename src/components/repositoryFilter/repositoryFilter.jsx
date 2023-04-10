@@ -1,10 +1,18 @@
-import React from 'react';
+import React from "react";
 
-import styles from './repositoryFilter.module.scss';
+import { MyInput } from "../UI";
 
-export const RepositoryFilter = () => (
-  <div className={styles.RepositoryFilter}>
-    RepositoryFilter Component
-  </div>
-);
+import styles from "./repositoryFilter.module.scss";
 
+export const RepositoryFilter = ({ filter, setFilter }) => {
+    return (
+        <>
+            <MyInput
+                placeholder="Search"
+                className={styles.input}
+                value={filter}
+                onChange={(e) => setFilter(e.target.value)}
+            />
+        </>
+    );
+};

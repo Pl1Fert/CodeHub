@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useLoaderData } from "react-router-dom";
 
-import { RepositoryList } from "../../components";
+import { RepositoryFilter, RepositoryList } from "../../components";
+import { useRepositories } from "../../hooks";
 
 import styles from "./homePage.module.scss";
 
 export const HomePage = () => {
     const { darkMode } = useSelector((state) => state.mode);
     const { repositories } = useLoaderData();
+    const [filter, setFilter] = useState("");
 
     const sectionStyles = [styles.section];
     const asideStyles = [styles.aside];
@@ -18,10 +20,17 @@ export const HomePage = () => {
         asideStyles.push(styles.aside_dark);
     }
 
+    const filteredRepositories = useRepositories(repositories, filter);
+
     return (
         <section className={sectionStyles.join(" ")}>
             <aside className={asideStyles.join(" ")}>
-                <RepositoryList className={styles.repositoryList} repositories={repositories} />
+                <h4 className={styles.asideTitle}>Top Repositories</h4>
+                <RepositoryFilter filter={filter} setFilter={setFilter} />
+                <RepositoryList
+                    className={styles.repositoryList}
+                    repositories={filteredRepositories}
+                />
             </aside>
             <main className={styles.main}>HomePage</main>
         </section>
