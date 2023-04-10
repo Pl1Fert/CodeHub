@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { RepositoriesService } from "../../services/repositoriesService";
+import { RepositoriesService } from "../../services";
 
 const initialState = {
     repositories: [],
@@ -29,7 +29,7 @@ const repositoriesSlice = createSlice({
             state.isFetched = true;
         },
         [getRepositories.rejected]: (state) => {
-            state.repositories = [...state];
+            state.repositories = [...state.repositories];
         },
     },
 });

@@ -8,6 +8,16 @@ const setCookie = (cookieName, cookieValue) => {
     cookies.set(cookieName, cookieValue, { path: COOKIES.PATH });
 };
 
+const removeCookie = (cookieName) => {
+    cookies.remove(cookieName, { path: COOKIES.PATH });
+};
+
+const getCookie = (cookieName) => {
+    return cookies.get(cookieName, { path: COOKIES.PATH });
+};
+
 export const CookieService = {
     setCookie,
+    removeCookie,
+    getCookie,
 };

@@ -1,10 +1,22 @@
-import React from 'react';
+import React from "react";
 
-import styles from './repositoryList.module.scss';
+import { RepositoryLink } from "../repositoryLink";
+import { APP_ROUTES } from "../../constants";
 
-export const RepositoryList = () => (
-  <div className={styles.RepositoryList}>
-    RepositoryList Component
-  </div>
+import styles from "./repositoryList.module.scss";
+
+export const RepositoryList = ({ className, repositories }) => (
+    <ul className={className}>
+        {repositories.length !== 0 ? (
+            repositories.map((repository) => (
+                <li key={repository.id}>
+                    <RepositoryLink to={`/${APP_ROUTES.REPOSITORIES}/${repository.id}`}>
+                        {repository.repo_name}
+                    </RepositoryLink>
+                </li>
+            ))
+        ) : (
+            <p>no repositories</p>
+        )}
+    </ul>
 );
-

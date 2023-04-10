@@ -144,11 +144,11 @@ export const LoginPage = () => {
                             )}
                         </div>
                         {/* TODO: need to clear after panel button click */}
-                        {auth.message !== "" ? (
+                        {auth.message !== "" && (
                             <p className={styles.errorMessage}>
                                 {auth.message.charAt(0).toUpperCase() + auth.message.slice(1)}
                             </p>
-                        ) : null}
+                        )}
                         <input
                             type="submit"
                             className={styles.submit}

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getRepositories } from "../../redux/slices/repositoriesSlice";
+import { RepositoryList } from "../../components";
 
 import styles from "./homePage.module.scss";
 
@@ -10,8 +11,13 @@ export const HomePage = () => {
     const { repositories, isFetched } = useSelector((state) => state.repositories);
     const dispatch = useDispatch();
 
-    const mainStyles = [styles.main];
-    darkMode ? mainStyles.push(styles.main_dark) : null;
+    const sectionStyles = [styles.section];
+    const asideStyles = [styles.aside];
+
+    if (darkMode === true) {
+        sectionStyles.push(styles.section_dark);
+        asideStyles.push(styles.aside_dark);
+    }
 
     useEffect(() => {
         if (isFetched === false) {
@@ -21,17 +27,11 @@ export const HomePage = () => {
     }, []);
 
     return (
-        <main className={mainStyles.join(" ")}>
-            HomePage
-            <aside>
-                {repositories.length !== 0 ? (
-                    repositories.map((repository) => (
-                        <p key={repository.id}>{repository.repo_name}</p>
-                    ))
-                ) : (
-                    <h3>no repositories</h3>
-                )}
+        <section className={sectionStyles.join(" ")}>
+            <aside className={asideStyles.join(" ")}>
+                <RepositoryList className={styles.repositoryList} repositories={repositories} />
             </aside>
-        </main>
+            <main className={styles.main}>HomePage</main>
+        </section>
     );
 };

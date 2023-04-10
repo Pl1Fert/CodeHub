@@ -26,8 +26,6 @@ const login = async (email, password) => {
         password,
     });
 
-    //TODO: mb make check on data detail and return it
-
     if (!response.detail) {
         localStorage.setItem("tokens", JSON.stringify(response));
 
@@ -38,6 +36,9 @@ const login = async (email, password) => {
 
 const logout = () => {
     localStorage.removeItem("tokens");
+
+    CookieService.removeCookie(COOKIES.NAMES.ACCESS_TOKEN);
+    CookieService.removeCookie(COOKIES.NAMES.REFRESH_TOKEN);
 };
 
 export const AuthService = {
