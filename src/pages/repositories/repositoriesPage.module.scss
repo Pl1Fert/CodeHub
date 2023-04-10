@@ -1,10 +1,10 @@
 @import "../../styles/colors";
 
-.main {
+.section {
     height: 100vh;
-}
 
-.main_dark {
-    background-color: $dark-theme-bg;
-    color: $white;
+    &_dark {
+        background-color: $dark-theme-bg;
+        color: $white;
+    }
 }

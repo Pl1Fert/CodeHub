@@ -1,24 +1,16 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { getUser } from "../../redux/slices/userSlice";
+import React from "react";
+import { useSelector } from "react-redux";
+import { useLoaderData } from "react-router-dom";
 
 import styles from "./profilePage.module.scss";
 
 export const ProfilePage = () => {
     const { darkMode } = useSelector((state) => state.mode);
-    const { user, isFetched } = useSelector((state) => state.user);
-    const dispatch = useDispatch();
+
+    const { user } = useLoaderData();
 
     const mainStyles = [styles.main];
     darkMode ? mainStyles.push(styles.main_dark) : null;
-
-    useEffect(() => {
-        if (isFetched === false) {
-            dispatch(getUser());
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     return (
         <main className={mainStyles.join(" ")}>

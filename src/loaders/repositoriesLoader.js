@@ -6,6 +6,8 @@ const getRepositories = async () => {
     return response.data;
 };
 
-export const RepositoriesService = {
-    getRepositories,
+export const repositoriesLoader = async () => {
+    const repositories = await getRepositories();
+
+    return { repositories };
 };

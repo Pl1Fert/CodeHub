@@ -12,15 +12,24 @@ import {
 } from "../pages";
 import { RequireAuth } from "../hoc";
 import { Layout } from "../components";
+import { repositoriesLoader, userLoader } from "../loaders";
 
 export const MainRouter = createBrowserRouter(
     createRoutesFromElements(
         <Route path={APP_ROUTES.HOME} errorElement={<ErrorPage />}>
             <Route element={<RequireAuth />}>
                 <Route element={<Layout />}>
-                    <Route index element={<HomePage />} />
-                    <Route path={APP_ROUTES.PROFILE} element={<ProfilePage />} />
-                    <Route path={APP_ROUTES.REPOSITORIES} element={<RepositoriesPage />} />
+                    <Route index element={<HomePage />} loader={repositoriesLoader} />
+                    <Route
+                        path={APP_ROUTES.PROFILE}
+                        element={<ProfilePage />}
+                        loader={userLoader}
+                    />
+                    <Route
+                        path={APP_ROUTES.REPOSITORIES}
+                        element={<RepositoriesPage />}
+                        loader={repositoriesLoader}
+                    />
                     <Route path={APP_ROUTES.REPOSITORY} element={<RepositoryPage />} />
                 </Route>
             </Route>

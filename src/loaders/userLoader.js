@@ -3,15 +3,11 @@ import { API_URLS } from "../constants";
 
 const getUser = async () => {
     const response = await axiosAPI.sendRequest(API_URLS.USER, "get");
-
-    switch (response.status) {
-        case 200:
-            return response.data;
-        default:
-            break;
-    }
+    return response.data;
 };
 
-export const UserService = {
-    getUser,
+export const userLoader = async () => {
+    const user = await getUser();
+
+    return { user };
 };

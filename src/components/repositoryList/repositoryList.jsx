@@ -10,7 +10,7 @@ export const RepositoryList = ({ className, repositories }) => (
         {repositories.length !== 0 ? (
             repositories.map((repository) => (
                 <li key={repository.id}>
-                    <RepositoryLink to={`/${APP_ROUTES.REPOSITORIES}/${repository.id}`}>
+                    <RepositoryLink to={`/${APP_ROUTES.REPOSITORIES}/${repository.repo_name}`}>
                         {repository.repo_name}
                     </RepositoryLink>
                 </li>

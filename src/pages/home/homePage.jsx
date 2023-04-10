@@ -1,15 +1,14 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
+import { useLoaderData } from "react-router-dom";
 
-import { getRepositories } from "../../redux/slices/repositoriesSlice";
 import { RepositoryList } from "../../components";
 
 import styles from "./homePage.module.scss";
 
 export const HomePage = () => {
     const { darkMode } = useSelector((state) => state.mode);
-    const { repositories, isFetched } = useSelector((state) => state.repositories);
-    const dispatch = useDispatch();
+    const { repositories } = useLoaderData();
 
     const sectionStyles = [styles.section];
     const asideStyles = [styles.aside];
@@ -18,13 +17,6 @@ export const HomePage = () => {
         sectionStyles.push(styles.section_dark);
         asideStyles.push(styles.aside_dark);
     }
-
-    useEffect(() => {
-        if (isFetched === false) {
-            dispatch(getRepositories());
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     return (
         <section className={sectionStyles.join(" ")}>
