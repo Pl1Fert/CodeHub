@@ -1,8 +1,7 @@
 @import "../../styles/colors";
 
 .section {
-    height: 100vh;
-
+    height: 90vh;
     display: flex;
 
     &_dark {
@@ -34,4 +33,20 @@
     gap: 10px;
 
     text-align: left;
+    overflow: hidden;
+}
+
+.filterInput {
+    border: none;
+    padding: 3px 4px;
+    margin: 10px 0 20px;
+    border: 2px solid $blue;
+
+    font: inherit;
+    font-size: 15px;
+
+    color: $blue;
+
+    border-radius: 5px;
+    outline: none;
 }

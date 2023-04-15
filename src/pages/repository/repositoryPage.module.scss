@@ -1,1 +1,10 @@
-.RepositoryPage {}
+@import "../../styles/colors";
+
+.section {
+    height: 90vh;
+
+    &_dark {
+        background-color: $dark-theme-bg;
+        color: $white;
+    }
+}

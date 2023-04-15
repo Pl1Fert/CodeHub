@@ -26,7 +26,11 @@ export const HomePage = () => {
         <section className={sectionStyles.join(" ")}>
             <aside className={asideStyles.join(" ")}>
                 <h4 className={styles.asideTitle}>Top Repositories</h4>
-                <RepositoryFilter filter={filter} setFilter={setFilter} />
+                <RepositoryFilter
+                    filter={filter}
+                    setFilter={setFilter}
+                    className={styles.filterInput}
+                />
                 <RepositoryList
                     classNameList={styles.repositoryList}
                     repositories={filteredRepositories}
