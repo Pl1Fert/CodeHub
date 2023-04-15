@@ -9,7 +9,7 @@ export const NavList = () => {
     return (
         <nav className={styles.navList}>
             {NAV_LINKS.map((item) => (
-                <NavItem key={item.id} to={`/${item.linkDest}`}>
+                <NavItem key={item.id} to={item.linkDest}>
                     {item.linkName}
                 </NavItem>
             ))}

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import logo from "../../assets/react.svg";
+import logo from "../../assets/mainLogo.png";
 import iconSun from "../../assets/icon-sun.svg";
 import iconMoon from "../../assets/icon-moon.svg";
 import { APP_ROUTES } from "../../constants";
@@ -30,7 +30,7 @@ export const Header = () => {
     return (
         <header className={headerStyles.join(" ")}>
             <Link to={APP_ROUTES.HOME}>
-                <img src={logo} alt="logo" />
+                <img src={logo} alt="logo" className={styles.logo} />
             </Link>
             <NavList />
             <div className={styles.buttons}>

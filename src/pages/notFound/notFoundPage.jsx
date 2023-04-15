@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import img from "../../assets/react.svg";
+import logo from "../../assets/logo.svg";
+import { APP_ROUTES } from "../../constants";
 
 import styles from "./notFoundPage.module.scss";
 
@@ -10,7 +11,7 @@ export const NotFoundPage = () => {
         <section className={styles.notFoundPage}>
             <div className={styles.container}>
                 <div className={styles.sectionInner}>
-                    <img src={img} alt="img" className={styles.img} />
+                    <img src={logo} alt="logo" className={styles.logo} />
                     <div className={styles.content}>
                         <h1 className={styles.title}>404</h1>
                         <h2 className={styles.subtitle}>UH OH! You&apos;re lost.</h2>
@@ -19,7 +20,7 @@ export const NotFoundPage = () => {
                             mystery. But you can click the button below to go back to the homepage.
                         </p>
                         <button className={styles.button}>
-                            <Link to="/">Home</Link>
+                            <Link to={APP_ROUTES.HOME}>Home</Link>
                         </button>
                     </div>
                 </div>

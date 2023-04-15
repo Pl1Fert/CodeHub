@@ -26,6 +26,7 @@ export const LoginPage = () => {
             isValid: isLoginFormValid,
         },
     } = useForm({ mode: "onBlur", resolver: yupResolver(loginSchema) });
+
     const {
         register: registerFormRegister,
         handleSubmit: handleRegisterFormSubmit,
@@ -39,7 +40,7 @@ export const LoginPage = () => {
 
     const onLoginSubmit = (data) => {
         dispatch(login(data)).then(() => {
-            navigate(APP_ROUTES.HOME_PAGE);
+            navigate(APP_ROUTES.HOME);
         });
         resetAllForms();
     };
