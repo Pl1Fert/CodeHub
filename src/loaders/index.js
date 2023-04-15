@@ -1,2 +1,3 @@
-export * from "./repositoriesLoader";
-export * from "./userLoader";
+export * from "./homePageLoader";
+export * from "./profilePageLoader";
+export * from "./repositoriesPageLoader";

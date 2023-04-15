@@ -8,6 +8,7 @@ export const RepositoryFilter = ({ filter, setFilter }) => {
     return (
         <>
             <MyInput
+                type="text"
                 placeholder="Search"
                 className={styles.input}
                 value={filter}

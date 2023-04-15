@@ -28,7 +28,7 @@ export const HomePage = () => {
                 <h4 className={styles.asideTitle}>Top Repositories</h4>
                 <RepositoryFilter filter={filter} setFilter={setFilter} />
                 <RepositoryList
-                    className={styles.repositoryList}
+                    classNameList={styles.repositoryList}
                     repositories={filteredRepositories}
                 />
             </aside>
