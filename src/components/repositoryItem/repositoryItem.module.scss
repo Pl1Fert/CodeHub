@@ -28,3 +28,24 @@
         }
     }
 }
+
+.repositoryType {
+    font-size: 13px;
+    font-weight: 500;
+
+    transition: all 0.3s linear;
+}
+
+.starImg {
+    width: 20px;
+    height: 20px;
+}
+
+.button {
+    border: none;
+
+    outline: none;
+    background-color: transparent;
+
+    cursor: pointer;
+}

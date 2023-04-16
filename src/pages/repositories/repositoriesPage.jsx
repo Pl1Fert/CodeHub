@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Form, useLoaderData, useNavigation } from "react-router-dom";
 
-import { MyButton, MyInput, RepositoryFilter, RepositoryList } from "../../components";
+import { RepositoryFilter, RepositoryList } from "../../components";
 import { useRepositories } from "../../hooks";
 
 import styles from "./repositoriesPage.module.scss";
@@ -35,7 +35,7 @@ export const RepositoriesPage = () => {
         <section className={sectionStyles.join(" ")}>
             <aside className={asideStyles.join(" ")}>
                 <Form method="post" className={styles.form}>
-                    <MyInput
+                    <input
                         type="text"
                         name="repositoryName"
                         placeholder="Repository"
@@ -44,19 +44,19 @@ export const RepositoriesPage = () => {
                     />
                     <label htmlFor="repositoryType">
                         Private:
-                        <MyInput
+                        <input
                             type="checkbox"
                             name="repositoryType"
                             className={styles.formCheckbox}
                         />
                     </label>
-                    <MyInput type="hidden" name="repositoryOwner" value={user.id} />
-                    <MyButton
+                    <input type="hidden" name="repositoryOwner" value={user.id} />
+                    <button
                         type="submit"
                         className={styles.formButton}
                         disabled={navigation.state === "submitting"}>
                         Add New
-                    </MyButton>
+                    </button>
                 </Form>
             </aside>
             <main className={mainStyles.join(" ")}>

@@ -128,5 +128,9 @@ label {
     border: 2px solid $blue;
     padding: 20px 30px;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     border-radius: 15px;
 }
