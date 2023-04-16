@@ -35,8 +35,8 @@
 }
 
 .filterInput {
-    border: none;
-    padding: 3px 4px;
+    width: 100%;
+    padding: 3px 10px;
     margin: 10px 0 20px;
     border: 2px solid $blue;
 
@@ -47,4 +47,14 @@
 
     border-radius: 5px;
     outline: none;
+}
+
+.darkInput {
+    background-color: $dark-theme-bg-input;
+    color: $gray;
+    border-color: $gray !important;
+
+    &::placeholder {
+        color: $gray;
+    }
 }

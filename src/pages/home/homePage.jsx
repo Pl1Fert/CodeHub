@@ -14,10 +14,12 @@ export const HomePage = () => {
 
     const sectionStyles = [styles.section];
     const asideStyles = [styles.aside];
+    const filterInputStyles = [styles.filterInput];
 
     if (darkMode === true) {
         sectionStyles.push(styles.darkTheme);
         asideStyles.push(styles.darkTheme);
+        filterInputStyles.push(styles.darkInput);
     }
 
     const filteredRepositories = useRepositories(repositories, filter);
@@ -29,7 +31,7 @@ export const HomePage = () => {
                 <RepositoryFilter
                     filter={filter}
                     setFilter={setFilter}
-                    className={styles.filterInput}
+                    className={filterInputStyles.join(" ")}
                 />
                 <RepositoryList
                     classNameList={styles.repositoryList}

@@ -25,7 +25,22 @@ const getRepositories = async () => {
     return response.data;
 };
 
+const getRepository = async (id) => {
+    const response = await axiosAPI.sendRequest(`${API_URLS.REPOSITORIES}${id}`, "get");
+
+    switch (response.status) {
+        case 403:
+            AuthService.logout();
+            return redirect(APP_ROUTES.LOGIN);
+        default:
+            break;
+    }
+
+    return response.data;
+};
+
 export const RepositoriesService = {
     createRepository,
     getRepositories,
+    getRepository,
 };

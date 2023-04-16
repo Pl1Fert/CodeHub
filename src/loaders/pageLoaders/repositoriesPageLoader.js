@@ -1,5 +1,5 @@
-import { repositoriesLoader } from "./repositoriesLoader";
-import { userLoader } from "./userLoader";
+import { repositoriesLoader } from "../repositoriesLoader";
+import { userLoader } from "../userLoader";
 
 export const repositoriesPageLoader = async () => {
     const { repositories } = await repositoriesLoader();

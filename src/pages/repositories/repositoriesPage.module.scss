@@ -1,7 +1,7 @@
 @import "../../styles/colors";
 
 .section {
-    height: auto;
+    height: 90vh;
 
     display: flex;
     justify-content: start;
@@ -42,6 +42,16 @@
     color: $blue;
     border-radius: 5px;
     outline: none;
+}
+
+.darkInput {
+    background-color: $dark-theme-bg-input;
+    color: $gray;
+    border-color: $gray !important;
+
+    &::placeholder {
+        color: $gray;
+    }
 }
 
 .form {

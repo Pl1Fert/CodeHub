@@ -3,6 +3,6 @@ export const APP_ROUTES = {
     LOGIN: "login",
     PROFILE: "profile",
     REPOSITORIES: "repositories",
-    REPOSITORY: "repositories/:id",
+    REPOSITORY: "repositories/:name/:id",
     NOT_FOUND: "*",
 };

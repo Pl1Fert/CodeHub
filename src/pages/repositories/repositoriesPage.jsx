@@ -17,12 +17,16 @@ export const RepositoriesPage = () => {
     const asideStyles = [styles.aside];
     const repositoryItemStyles = [styles.repositoryItem];
     const mainStyles = [styles.main];
+    const filterInputStyles = [styles.filterInput];
+    const formInputStyles = [styles.formInput];
 
     if (darkMode === true) {
         sectionStyles.push(styles.darkTheme);
         asideStyles.push(styles.darkTheme);
         mainStyles.push(styles.darkTheme);
         repositoryItemStyles.push(styles.darkTheme);
+        filterInputStyles.push(styles.darkInput);
+        formInputStyles.push(styles.darkInput);
     }
 
     const filteredRepositories = useRepositories(repositories, filter);
@@ -35,7 +39,7 @@ export const RepositoriesPage = () => {
                         type="text"
                         name="repositoryName"
                         placeholder="Repository"
-                        className={styles.formInput}
+                        className={formInputStyles.join(" ")}
                         required={true}
                     />
                     <label htmlFor="repositoryType">
@@ -59,7 +63,7 @@ export const RepositoriesPage = () => {
                 <RepositoryFilter
                     filter={filter}
                     setFilter={setFilter}
-                    className={styles.filterInput}
+                    className={filterInputStyles.join(" ")}
                 />
                 <RepositoryList
                     classNameList={styles.repositoryList}

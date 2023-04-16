@@ -11,7 +11,8 @@ export const RepositoryList = ({ classNameList, classNameItem, repositories, pag
             repositories.map((repository) => (
                 <li key={repository.id} className={classNameItem}>
                     <div>
-                        <RepositoryLink to={`/${APP_ROUTES.REPOSITORIES}/${repository.repo_name}`}>
+                        <RepositoryLink
+                            to={`/${APP_ROUTES.REPOSITORIES}/${repository.repo_name}/${repository.id}`}>
                             {repository.repo_name}
                         </RepositoryLink>
                         {page === "repositories" && (
