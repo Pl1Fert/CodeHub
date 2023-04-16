@@ -5,9 +5,7 @@ import { LoaderSpinner } from "./components";
 import { MainRouter } from "./routers";
 
 const App = () => {
-    return (
-        <RouterProvider router={MainRouter} fallbackElement={<LoaderSpinner/>}/>
-    );
+    return <RouterProvider router={MainRouter} fallbackElement={<LoaderSpinner />} />;
 };
 
 export default App;

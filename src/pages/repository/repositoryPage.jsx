@@ -7,7 +7,6 @@ import styles from "./repositoryPage.module.scss";
 export const RepositoryPage = () => {
     const { darkMode } = useSelector((state) => state.mode);
     const { repository } = useLoaderData();
-    console.log(repository);
     const sectionStyles = [styles.section];
     darkMode ? sectionStyles.push(styles.section_dark) : null;
 
