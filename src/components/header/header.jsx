@@ -17,7 +17,7 @@ export const Header = () => {
     const { darkMode } = useSelector((state) => state.mode);
     const headerStyles = [styles.header];
 
-    darkMode ? headerStyles.push(styles.header_dark) : null;
+    darkMode ? headerStyles.push(styles.darkTheme) : null;
 
     const onLogoutClick = () => {
         dispatch(logout());

@@ -3,11 +3,12 @@
 .section {
     height: 90vh;
     display: flex;
+}
 
-    &_dark {
-        background-color: $dark-theme-bg;
-        color: $white;
-    }
+.darkTheme {
+    background-color: $dark-theme-bg;
+    color: $white;
+    border-color: $gray !important;
 }
 
 .aside {
@@ -16,10 +17,7 @@
     padding: 30px 25px 10px;
 
     text-align: center;
-
-    &_dark {
-        border-color: $black;
-    }
+    overflow-y: hidden;
 }
 
 .main {

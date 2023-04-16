@@ -11,11 +11,12 @@
     gap: 40px;
 
     background-color: $blue;
+}
 
-    &_dark {
-        background-color: $dark-theme-bg;
-        border-color: $black;
-    }
+.darkTheme {
+    background-color: $dark-theme-bg;
+    border-color: $gray;
+    color: $white;
 }
 
 .logo {

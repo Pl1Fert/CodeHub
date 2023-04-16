@@ -16,8 +16,8 @@ export const HomePage = () => {
     const asideStyles = [styles.aside];
 
     if (darkMode === true) {
-        sectionStyles.push(styles.section_dark);
-        asideStyles.push(styles.aside_dark);
+        sectionStyles.push(styles.darkTheme);
+        asideStyles.push(styles.darkTheme);
     }
 
     const filteredRepositories = useRepositories(repositories, filter);

@@ -1,10 +1,122 @@
 @import "../../styles/colors";
 
 .section {
-    height: 90vh;
+    height: auto;
 
-    &_dark {
-        background-color: $dark-theme-bg;
-        color: $white;
+    display: flex;
+    justify-content: start;
+}
+
+.darkTheme {
+    background-color: $dark-theme-bg;
+    color: $white;
+    border-color: $gray !important;
+}
+
+.aside {
+    width: 25%;
+}
+
+.main {
+    width: 75%;
+    padding: 40px 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 50px;
+
+    border-left: 2px solid $blue;
+}
+
+.filterInput {
+    width: 40%;
+    margin: 0 auto;
+    padding: 10px 15px;
+    border: 2px solid $blue;
+
+    font: inherit;
+    font-size: 15px;
+
+    color: $blue;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 40px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &Input {
+        max-width: 300px;
+        padding: 5px 10px;
+        border: 2px solid $blue;
+
+        font: inherit;
+        font-size: 15px;
+
+        color: $blue;
+        border-radius: 5px;
+        outline: none;
     }
+
+    &Checkbox {
+        width: 20px;
+        height: 20px;
+
+        border-color: $blue;
+        color: $blue;
+
+        cursor: pointer;
+
+        outline: none;
+    }
+
+    &Button {
+        width: 50%;
+        border: none;
+        padding: 10px 15px;
+
+        font: inherit;
+        font-weight: 500;
+        text-transform: uppercase;
+
+        border-radius: 20px;
+        background-color: $blue;
+        color: $white;
+
+        cursor: pointer;
+        transition: all 0.3s linear;
+
+        &:hover {
+            background-color: $light-blue;
+        }
+    }
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.repositoryList {
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.repositoryItem {
+    border: 2px solid $blue;
+    padding: 20px 30px;
+
+    border-radius: 15px;
 }

@@ -30,7 +30,7 @@
     background-color: #eee;
 
     &:focus {
-        border: 1px solid $black;
+        border: 1px solid $blue;
     }
 }
 
@@ -84,31 +84,31 @@
 
 ::-webkit-input-placeholder {
     /* WebKit, Blink, Edge */
-    color: $black;
+    color: $blue;
     opacity: 0.2;
 }
 :-moz-placeholder {
     /* Mozilla Firefox 4 to 18 */
-    color: $black;
+    color: $blue;
     opacity: 0.2;
 }
 ::-moz-placeholder {
     /* Mozilla Firefox 19+ */
-    color: $black;
+    color: $blue;
     opacity: 0.2;
 }
 :-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: $black;
+    color: $blue;
 }
 ::-ms-input-placeholder {
     /* Microsoft Edge */
-    color: $black;
+    color: $blue;
     opacity: 0.2;
 }
 
 ::placeholder {
-    color: $black;
+    color: $blue;
     opacity: 0.2;
 }
 
