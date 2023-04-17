@@ -9,6 +9,7 @@ export const RepositoryFilter = ({ filter, setFilter, className }) => {
                 className={className}
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
+                maxLength={50}
             />
         </>
     );

@@ -3,5 +3,7 @@ export * from "./home";
 export * from "./profile";
 export * from "./notFound";
 export * from "./error";
-export * from "./repository"
-export * from "./repositories"
+export * from "./repository";
+export * from "./repositories";
+export * from "./repositoryEdit";
+export * from "./profileEdit";

@@ -9,10 +9,12 @@ import {
     ErrorPage,
     RepositoriesPage,
     RepositoryPage,
+    ProfileEditPage,
+    RepositoryEditPage,
 } from "../pages";
 import { RequireAuth } from "../hoc";
 import { Layout } from "../components";
-import { createRepositoryAction } from "../actions";
+import { createRepositoryAction, editRepositoryAction, editUserAction } from "../actions";
 import {
     homePageLoader,
     profilePageLoader,
@@ -29,7 +31,13 @@ export const MainRouter = createBrowserRouter(
                     <Route
                         path={APP_ROUTES.PROFILE}
                         element={<ProfilePage />}
-                        loader={profilePageLoader}></Route>
+                        loader={profilePageLoader}
+                    />
+                    <Route
+                        path={APP_ROUTES.PROFILE_EDIT}
+                        element={<ProfileEditPage />}
+                        action={editUserAction}
+                    />
                     <Route
                         path={APP_ROUTES.REPOSITORIES}
                         element={<RepositoriesPage />}
@@ -40,6 +48,11 @@ export const MainRouter = createBrowserRouter(
                         path={APP_ROUTES.REPOSITORY}
                         element={<RepositoryPage />}
                         loader={repositoryPageLoader}
+                    />
+                    <Route
+                        path={APP_ROUTES.REPOSITORY_EDIT}
+                        element={<RepositoryEditPage />}
+                        action={editRepositoryAction}
                     />
                 </Route>
             </Route>

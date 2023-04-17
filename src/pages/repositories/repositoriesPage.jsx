@@ -41,6 +41,8 @@ export const RepositoriesPage = () => {
                         placeholder="Repository"
                         className={formInputStyles.join(" ")}
                         required={true}
+                        minLength={1}
+                        maxLength={50}
                     />
                     <label htmlFor="repositoryType">
                         Private:

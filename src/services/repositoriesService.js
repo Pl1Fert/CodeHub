@@ -39,8 +39,31 @@ const getRepository = async (id) => {
     return response.data;
 };
 
+const editRepository = async (data) => {
+    const response = await axiosAPI.sendRequest(
+        `${API_URLS.REPOSITORIES}${data.id}`,
+        "patch",
+        data
+    );
+
+    return response.data;
+};
+
+const deleteRepository = async (id) => {
+    const response = await axiosAPI.sendRequest(`${API_URLS.REPOSITORIES}${id}`, "delete");
+
+    switch (response.status) {
+        case 204:
+            return redirect(APP_ROUTES.REPOSITORIES);
+        default:
+            break;
+    }
+};
+
 export const RepositoriesService = {
     createRepository,
     getRepositories,
     getRepository,
+    editRepository,
+    deleteRepository,
 };

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { RepositoryItem } from "../repositoryItem/repositoryItem";
+import { RepositoryItem } from "../repositoryItem";
 
 export const RepositoryList = ({ classNameList, classNameItem, repositories, page }) => (
     <ul className={classNameList}>

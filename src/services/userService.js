@@ -19,4 +19,15 @@ const getUser = async () => {
     return response.data;
 };
 
-export const UserService = { getUser };
+const editUser = async (data, id) => {
+    const response = await axiosAPI.sendRequest(`${API_URLS.REGISTER}${id}`, "put", data);
+
+    switch (response.status) {
+        case 200:
+            return redirect(APP_ROUTES.PROFILE);
+        default:
+            break;
+    }
+};
+
+export const UserService = { getUser, editUser };
