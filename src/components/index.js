@@ -2,6 +2,7 @@ export * from "./loaderSpinner";
 export * from "./repositoryList";
 export * from "./repositoryItem";
 export * from "./repositoryFilter";
+export * from "./repositorySort";
 export * from "./header";
 export * from "./navList";
 export * from "./navItem";

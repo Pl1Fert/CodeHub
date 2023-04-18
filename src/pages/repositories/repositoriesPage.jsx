@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Form, useLoaderData, useNavigation } from "react-router-dom";
 
-import { RepositoryFilter, RepositoryList } from "../../components";
+import { RepositoryFilter, RepositoryList, RepositorySort } from "../../components";
 import { useRepositories } from "../../hooks";
+import { SORT_TYPES } from "../../constants";
 
 import styles from "./repositoriesPage.module.scss";
 
@@ -12,6 +13,7 @@ export const RepositoriesPage = () => {
     const { repositories, user } = useLoaderData();
     const navigation = useNavigation();
     const [filter, setFilter] = useState("");
+    const [sort, setSort] = useState(SORT_TYPES.ASC);
 
     const sectionStyles = [styles.section];
     const asideStyles = [styles.aside];
@@ -29,7 +31,7 @@ export const RepositoriesPage = () => {
         formInputStyles.push(styles.darkInput);
     }
 
-    const filteredRepositories = useRepositories(repositories, filter);
+    const filteredRepositories = useRepositories(repositories, filter, sort);
 
     return (
         <section className={sectionStyles.join(" ")}>
@@ -67,6 +69,7 @@ export const RepositoriesPage = () => {
                     setFilter={setFilter}
                     className={filterInputStyles.join(" ")}
                 />
+                <RepositorySort sort={sort} setSort={setSort} />
                 <RepositoryList
                     classNameList={styles.repositoryList}
                     classNameItem={repositoryItemStyles.join(" ")}

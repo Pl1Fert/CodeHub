@@ -27,7 +27,7 @@ const login = async (email, password) => {
     });
 
     if (!response.detail) {
-        localStorage.setItem("tokens", JSON.stringify(response));
+        localStorage.setItem("tokens", JSON.stringify(response.data));
 
         CookieService.setCookie(COOKIES.NAMES.REFRESH_TOKEN, response[COOKIES.NAMES.REFRESH_TOKEN]);
         CookieService.setCookie(COOKIES.NAMES.ACCESS_TOKEN, response[COOKIES.NAMES.ACCESS_TOKEN]);
