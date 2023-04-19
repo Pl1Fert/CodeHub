@@ -17,8 +17,10 @@ import { Layout } from "../components";
 import { createRepositoryAction, editRepositoryAction, editUserAction } from "../actions";
 import {
     homePageLoader,
+    profileEditPageLoader,
     profilePageLoader,
     repositoriesPageLoader,
+    repositoryEditPageLoader,
     repositoryPageLoader,
 } from "../loaders";
 
@@ -36,6 +38,7 @@ export const MainRouter = createBrowserRouter(
                     <Route
                         path={APP_ROUTES.PROFILE_EDIT}
                         element={<ProfileEditPage />}
+                        loader={profileEditPageLoader}
                         action={editUserAction}
                     />
                     <Route
@@ -52,6 +55,7 @@ export const MainRouter = createBrowserRouter(
                     <Route
                         path={APP_ROUTES.REPOSITORY_EDIT}
                         element={<RepositoryEditPage />}
+                        loader={repositoryEditPageLoader}
                         action={editRepositoryAction}
                     />
                 </Route>

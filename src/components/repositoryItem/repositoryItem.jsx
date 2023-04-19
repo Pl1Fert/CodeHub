@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import { APP_ROUTES } from "../../constants";
+import { RepositoriesService } from "../../services";
 
 import starImg from "../../assets/star.png";
 import favoriteImg from "../../assets/favourite.png";
@@ -13,11 +14,14 @@ export const RepositoryItem = ({ className, page, repository }) => {
     const { darkMode } = useSelector((state) => state.mode);
     const [favoriteRep, setFavoriteRep] = useState(false);
     const linkStyles = [styles.repositoryLink];
+    const pagesForRepoType = ["repositories", "profile"];
+    const pagesForStar = ["repositories"];
 
     darkMode ? linkStyles.push(styles.repositoryLink_dark) : null;
 
     const onClickHandler = () => {
         setFavoriteRep((prev) => !prev);
+        RepositoriesService.pinUnpinRepository(repository.id);
     };
 
     return (
@@ -28,13 +32,14 @@ export const RepositoryItem = ({ className, page, repository }) => {
                     className={linkStyles.join(" ")}>
                     {repository.repo_name}
                 </Link>
-                {page === "repositories" && (
+                {pagesForRepoType.includes(page) && (
                     <p className={styles.repositoryType}>
                         {repository.is_private === true ? "private" : "public"}
                     </p>
                 )}
             </div>
-            {page === "repositories" && (
+            {/* TODO: add state for star if reloaded */}
+            {pagesForStar.includes(page) && (
                 <button type="button" onClick={onClickHandler} className={styles.button}>
                     {favoriteRep ? (
                         <img src={favoriteImg} alt="favorite" className={styles.starImg} />

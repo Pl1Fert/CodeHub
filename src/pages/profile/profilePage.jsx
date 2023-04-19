@@ -1,23 +1,56 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+
+import { RepositoryList } from "../../components";
+import noPhotoImg from "../../assets/no_photo.png";
+import editImg from "../../assets/edit_icon.svg";
 
 import styles from "./profilePage.module.scss";
 
 export const ProfilePage = () => {
     const { darkMode } = useSelector((state) => state.mode);
-
-    const { user } = useLoaderData();
+    const { user, pinnedRepositories } = useLoaderData();
 
     const sectionStyles = [styles.section];
-    darkMode ? sectionStyles.push(styles.section_dark) : null;
+    const asideStyles = [styles.aside];
+    const repositoryItemStyles = [styles.repositoryItem];
+    const mainStyles = [styles.main];
+    const editButtonStyles = [styles.profileEditButton];
+
+    if (darkMode === true) {
+        sectionStyles.push(styles.darkTheme);
+        asideStyles.push(styles.darkTheme);
+        mainStyles.push(styles.darkTheme);
+        repositoryItemStyles.push(styles.darkTheme);
+        editButtonStyles.push(styles.profileEditButton_darkButton);
+    }
 
     return (
         <section className={sectionStyles.join(" ")}>
-            ProfilePage
-            <h3>{user.username}</h3>
-            <h3>{user.email}</h3>
-            <h3>{user.id}</h3>
+            <aside className={asideStyles.join(" ")}>
+                <div className={styles.profile}>
+                    <div className={styles.profilePhotoWrapper}>
+                        <img src={noPhotoImg} alt="noPhoto" className={styles.profilePhoto} />
+                    </div>
+                    <h3 className={styles.profileName}>{user.username}</h3>
+                    <h4 className={styles.profileEmail}>{user.email}</h4>
+                    <Link to={"edit"}>
+                        <button type="button" className={editButtonStyles.join(" ")}>
+                            Edit
+                            <img src={editImg} alt="edit" className={styles.profileEditImg} />
+                        </button>
+                    </Link>
+                </div>
+            </aside>
+            <main className={mainStyles.join(" ")}>
+                <RepositoryList
+                    classNameList={styles.repositoryList}
+                    classNameItem={repositoryItemStyles.join(" ")}
+                    repositories={pinnedRepositories}
+                    page={"profile"}
+                />
+            </main>
         </section>
     );
 };

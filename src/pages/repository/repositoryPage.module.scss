@@ -1,6 +1,7 @@
 @import "../../styles/colors";
 
 .section {
+    min-height: 91vh;
     &_dark {
         background-color: $dark-theme-bg;
         color: $white;

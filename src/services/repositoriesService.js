@@ -25,6 +25,34 @@ const getRepositories = async () => {
     return response.data;
 };
 
+const getPinnedRepositories = async () => {
+    const response = await axiosAPI.sendRequest(API_URLS.PINNED_REPOSITORIES, "get");
+
+    switch (response.status) {
+        case 403:
+            AuthService.logout();
+            return redirect(APP_ROUTES.LOGIN);
+        default:
+            break;
+    }
+
+    return response.data;
+};
+
+const pinUnpinRepository = async (id) => {
+    const response = await axiosAPI.sendRequest(`${API_URLS.REPOSITORIES}${id}/pin/`, "patch");
+
+    switch (response.status) {
+        case 403:
+            AuthService.logout();
+            return redirect(APP_ROUTES.LOGIN);
+        default:
+            break;
+    }
+
+    return response.data;
+};
+
 const getRepository = async (id) => {
     const response = await axiosAPI.sendRequest(`${API_URLS.REPOSITORIES}${id}`, "get");
 
@@ -66,4 +94,6 @@ export const RepositoriesService = {
     getRepository,
     editRepository,
     deleteRepository,
+    getPinnedRepositories,
+    pinUnpinRepository,
 };

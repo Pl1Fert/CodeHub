@@ -1,9 +1,9 @@
-import { repositoriesLoader } from "../repositoriesLoader";
+import { pinnedRepositoriesLoader } from "../pinnedRepositoriesLoader";
 import { userLoader } from "../userLoader";
 
 export const profilePageLoader = async () => {
-    const { repositories } = await repositoriesLoader();
+    const { pinnedRepositories } = await pinnedRepositoriesLoader();
     const { user } = await userLoader();
 
-    return { repositories, user };
+    return { pinnedRepositories, user };
 };

@@ -5,5 +5,6 @@ export const API_URLS = {
     LOGIN: API_URL + "/tokens/",
     USER: API_URL + "/users/me/",
     REPOSITORIES: API_URL + "/repositories/",
+    PINNED_REPOSITORIES: API_URL + "/repositories/pin/",
     COMMITS: API_URL + "/commits/",
 };
