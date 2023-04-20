@@ -8,7 +8,6 @@ export const createRepositoryAction = async ({ request }) => {
     const newRepository = {
         repo_name: formData.get("repositoryName"),
         is_private: !!formData.get("repositoryType"),
-        owner: formData.get("repositoryOwner"),
     };
 
     const repository = await RepositoriesService.createRepository(newRepository);

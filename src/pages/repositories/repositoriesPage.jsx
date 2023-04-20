@@ -10,7 +10,7 @@ import styles from "./repositoriesPage.module.scss";
 
 export const RepositoriesPage = () => {
     const { darkMode } = useSelector((state) => state.mode);
-    const { repositories, user } = useLoaderData();
+    const { repositories } = useLoaderData();
     const navigation = useNavigation();
     const [filter, setFilter] = useState("");
     const [sort, setSort] = useState(SORT_TYPES.ASC);
@@ -54,7 +54,6 @@ export const RepositoriesPage = () => {
                             className={styles.formCheckbox}
                         />
                     </label>
-                    <input type="hidden" name="repositoryOwner" value={user.id} />
                     <button
                         type="submit"
                         className={styles.formButton}
