@@ -9,7 +9,8 @@ const setCookie = (cookieName, cookieValue) => {
 };
 
 const removeCookie = (cookieName) => {
-    cookies.remove(cookieName, { path: COOKIES.PATH });
+    //cookies.remove(cookieName, { path: COOKIES.PATH });
+    cookies.set(cookieName, "", { path: COOKIES.PATH });
 };
 
 const getCookie = (cookieName) => {
