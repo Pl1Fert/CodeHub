@@ -7,4 +7,6 @@ export const APP_ROUTES = {
     REPOSITORY: "repositories/:name/:id",
     REPOSITORY_EDIT: "repositories/:name/:id/edit",
     NOT_FOUND: "*",
+    EDIT: "edit",
+    FILE: "files/:id",
 };

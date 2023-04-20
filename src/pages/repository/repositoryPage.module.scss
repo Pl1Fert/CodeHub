@@ -20,7 +20,13 @@
 
 .aside {
     width: 40%;
-    padding: 40px 30px;
+    padding: 25px 20px;
+
+    text-align: center;
+}
+
+.title {
+    margin-bottom: 20px;
 }
 
 .button {
@@ -41,17 +47,51 @@
     &:hover {
         background-color: $light-blue;
     }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: default;
+
+        &:hover {
+            background-color: $blue;
+        }
+    }
+}
+
+#backButton {
+    padding: 10px 35px;
+}
+
+.input {
+    max-width: 300px;
+    padding: 5px 10px;
+    margin-right: 15px;
+    border: 2px solid $blue;
+
+    font: inherit;
+    font-size: 15px;
+
+    color: $blue;
+    border-radius: 5px;
+    outline: none;
+}
+
+.darkInput {
+    background-color: $dark-theme-bg-input;
+    color: $gray !important;
+    border-color: $gray !important;
+
+    &::placeholder {
+        color: $gray;
+    }
 }
 
 .main {
     width: 60%;
-    padding: 40px 30px;
+    padding: 25px 20px;
     border-right: 2px solid $blue;
 
-    &Title {
-        margin-bottom: 30px;
-        text-align: center;
-    }
+    text-align: center;
 }
 
 .top {
@@ -59,14 +99,19 @@
     border-bottom: 2px solid $blue;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
+    gap: 150px;
 }
 
 .description {
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+.deleteBlock {
+    margin-left: auto;
 }
 
 .repository {

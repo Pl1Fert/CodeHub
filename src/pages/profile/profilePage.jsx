@@ -5,6 +5,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { RepositoryList } from "../../components";
 import noPhotoImg from "../../assets/no_photo.png";
 import editImg from "../../assets/edit_icon.svg";
+import { APP_ROUTES } from "../../constants";
 
 import styles from "./profilePage.module.scss";
 
@@ -35,7 +36,7 @@ export const ProfilePage = () => {
                     </div>
                     <h3 className={styles.profileName}>{user.username}</h3>
                     <h4 className={styles.profileEmail}>{user.email}</h4>
-                    <Link to={"edit"}>
+                    <Link to={APP_ROUTES.EDIT}>
                         <button type="button" className={editButtonStyles.join(" ")}>
                             Edit
                             <img src={editImg} alt="edit" className={styles.profileEditImg} />
