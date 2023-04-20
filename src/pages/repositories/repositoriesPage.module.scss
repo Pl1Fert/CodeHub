@@ -1,6 +1,8 @@
 @import "../../styles/colors";
 
 .section {
+    min-height: 90.5vh;
+
     display: flex;
     justify-content: start;
 }
@@ -44,7 +46,7 @@
 
 .darkInput {
     background-color: $dark-theme-bg-input;
-    color: $gray;
+    color: $gray !important;
     border-color: $gray !important;
 
     &::placeholder {

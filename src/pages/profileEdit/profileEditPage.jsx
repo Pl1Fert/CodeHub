@@ -22,7 +22,6 @@ export const ProfileEditPage = () => {
         <section className={sectionStyles.join(" ")}>
             <Form method="post" className={formStyles.join(" ")}>
                 <input type="hidden" defaultValue={user.id} name="id" />
-                <input type="hidden" defaultValue="a" name="password" />
                 <input
                     type="text"
                     defaultValue={user.username}

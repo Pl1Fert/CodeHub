@@ -8,7 +8,6 @@ export const editUserAction = async ({ request }) => {
     const userId = formData.get("id");
     const editedUser = {
         username: formData.get("username"),
-        password: formData.get("password"),
         email: formData.get("email"),
     };
 
