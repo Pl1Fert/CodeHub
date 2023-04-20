@@ -18,14 +18,14 @@ export const createRepositoryAction = async ({ request }) => {
 
 export const editRepositoryAction = async ({ request }) => {
     const formData = await request.formData();
+    const id = formData.get("repositoryId");
     const editedRepository = {
-        id: formData.get("repositoryId"),
         repo_name: formData.get("repositoryName"),
         is_private: !!formData.get("repositoryType"),
         owner: formData.get("repositoryOwner"),
     };
 
-    const repository = await RepositoriesService.editRepository(editedRepository);
+    const repository = await RepositoriesService.editRepository(editedRepository, id);
 
     return redirect(`/${APP_ROUTES.REPOSITORIES}/${repository.repo_name}/${repository.id}`);
 };

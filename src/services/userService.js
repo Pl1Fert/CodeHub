@@ -20,7 +20,7 @@ const getUser = async () => {
 };
 
 const editUser = async (data, id) => {
-    const response = await axiosAPI.sendRequest(`${API_URLS.REGISTER}${id}`, "put", data);
+    const response = await axiosAPI.sendRequest(`${API_URLS.REGISTER}${id}/`, "patch", data);
 
     switch (response.status) {
         case 200:

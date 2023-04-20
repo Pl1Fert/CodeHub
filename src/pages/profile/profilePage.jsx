@@ -44,6 +44,7 @@ export const ProfilePage = () => {
                 </div>
             </aside>
             <main className={mainStyles.join(" ")}>
+                <h2 className={styles.mainTitle}>Favourite Repositories</h2>
                 <RepositoryList
                     classNameList={styles.repositoryList}
                     classNameItem={repositoryItemStyles.join(" ")}

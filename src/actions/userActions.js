@@ -5,10 +5,10 @@ import { UserService } from "../services";
 
 export const editUserAction = async ({ request }) => {
     const formData = await request.formData();
-    const userId = formData.get("userId");
+    const userId = formData.get("id");
     const editedUser = {
         username: formData.get("username"),
-        password: !!formData.get("password"),
+        password: formData.get("password"),
         email: formData.get("email"),
     };
 

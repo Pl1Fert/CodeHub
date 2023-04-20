@@ -17,6 +17,17 @@
     padding: 40px 30px;
 }
 
+.main {
+    width: 80%;
+    padding: 40px 30px;
+    border-left: 2px solid $blue;
+
+    &Title {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+}
+
 .profile {
     display: flex;
     flex-direction: column;
@@ -76,4 +87,25 @@
         width: 20px;
         height: 20px;
     }
+}
+
+.repositoryList {
+    width: 70%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.repositoryItem {
+    width: 49%;
+    border: 2px solid $blue;
+    padding: 20px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: 15px;
 }

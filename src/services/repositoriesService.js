@@ -54,7 +54,7 @@ const pinUnpinRepository = async (id) => {
 };
 
 const getRepository = async (id) => {
-    const response = await axiosAPI.sendRequest(`${API_URLS.REPOSITORIES}${id}`, "get");
+    const response = await axiosAPI.sendRequest(`${API_URLS.REPOSITORIES}${id}/`, "get");
 
     switch (response.status) {
         case 403:
@@ -67,18 +67,14 @@ const getRepository = async (id) => {
     return response.data;
 };
 
-const editRepository = async (data) => {
-    const response = await axiosAPI.sendRequest(
-        `${API_URLS.REPOSITORIES}${data.id}`,
-        "patch",
-        data
-    );
+const editRepository = async (data, id) => {
+    const response = await axiosAPI.sendRequest(`${API_URLS.REPOSITORIES}${id}/`, "patch", data);
 
     return response.data;
 };
 
 const deleteRepository = async (id) => {
-    const response = await axiosAPI.sendRequest(`${API_URLS.REPOSITORIES}${id}`, "delete");
+    const response = await axiosAPI.sendRequest(`${API_URLS.REPOSITORIES}${id}/`, "delete");
 
     switch (response.status) {
         case 204:

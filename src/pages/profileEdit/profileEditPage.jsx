@@ -10,37 +10,34 @@ export const ProfileEditPage = () => {
     const navigate = useNavigate();
     const formInputStyles = [styles.formInput];
     const sectionStyles = [styles.section];
+    const formStyles = [styles.form];
 
     if (darkMode === true) {
         formInputStyles.push(styles.darkInput);
         sectionStyles.push(styles.darkTheme);
+        formStyles.push(styles.darkTheme);
     }
 
     return (
         <section className={sectionStyles.join(" ")}>
-            <Form method="post" className={styles.form}>
-                <input type="hidden" defaultValue={user.id} name="userId" />
+            <Form method="post" className={formStyles.join(" ")}>
+                <input type="hidden" defaultValue={user.id} name="id" />
+                <input type="hidden" defaultValue="a" name="password" />
                 <input
                     type="text"
                     defaultValue={user.username}
                     placeholder="Username"
-                    name="userName"
+                    name="username"
                     className={formInputStyles.join(" ")}
                     required
+                    maxLength={100}
+                    minLength={1}
                 />
                 <input
                     type="email"
                     defaultValue={user.email}
                     placeholder="Email"
-                    name="userEmail"
-                    className={formInputStyles.join(" ")}
-                    required
-                />
-                <input
-                    type="password"
-                    defaultValue={user.password}
-                    placeholder="Password"
-                    name="userPassword"
+                    name="email"
                     className={formInputStyles.join(" ")}
                     required
                 />
