@@ -8,7 +8,7 @@ import styles from "./fileItem.module.scss";
 export const FileItem = ({ file }) => {
     return (
         <div className={styles.fileItem}>
-            <Link to={APP_ROUTES.FILE + file.id}>{file.file_name}</Link>
+            <Link to={`/${APP_ROUTES.FILES}${file.id}`}>{file.file_name}</Link>
         </div>
     );
 };

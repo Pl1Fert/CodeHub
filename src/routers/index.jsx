@@ -11,6 +11,7 @@ import {
     RepositoryPage,
     ProfileEditPage,
     RepositoryEditPage,
+    FilePage,
 } from "../pages";
 import { RequireAuth } from "../hoc";
 import { Layout } from "../components";
@@ -22,6 +23,7 @@ import {
     repositoriesPageLoader,
     repositoryEditPageLoader,
     repositoryPageLoader,
+    filePageLoader,
 } from "../loaders";
 
 export const MainRouter = createBrowserRouter(
@@ -58,6 +60,7 @@ export const MainRouter = createBrowserRouter(
                         loader={repositoryEditPageLoader}
                         action={editRepositoryAction}
                     />
+                    <Route path={APP_ROUTES.FILE} element={<FilePage />} loader={filePageLoader} />
                 </Route>
             </Route>
             <Route path={APP_ROUTES.LOGIN} element={<LoginPage />} />

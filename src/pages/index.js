@@ -7,3 +7,4 @@ export * from "./repository";
 export * from "./repositories";
 export * from "./repositoryEdit";
 export * from "./profileEdit";
+export * from "./file";

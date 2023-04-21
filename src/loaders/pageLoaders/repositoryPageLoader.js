@@ -7,7 +7,7 @@ import { AuthService } from "../../services";
 export const repositoryPageLoader = async ({ params }) => {
     const repository = await repositoryLoader(params.id);
 
-    if (!repository) {
+    if (repository.detail) {
         AuthService.logout();
         return redirect(APP_ROUTES.LOGIN);
     }

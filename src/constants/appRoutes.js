@@ -9,4 +9,5 @@ export const APP_ROUTES = {
     NOT_FOUND: "*",
     EDIT: "edit",
     FILE: "files/:id",
+    FILES: "files/",
 };

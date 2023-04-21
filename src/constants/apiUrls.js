@@ -7,4 +7,5 @@ export const API_URLS = {
     REPOSITORIES: API_URL + "/repositories/",
     PINNED_REPOSITORIES: API_URL + "/repositories/pin/",
     COMMITS: API_URL + "/commits/",
+    DATA: API_URL + "/data/",
 };

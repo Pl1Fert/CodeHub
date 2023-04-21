@@ -14,8 +14,10 @@ export const RepositoryPage = () => {
     const { repository } = useLoaderData();
     const navigate = useNavigate();
     const [confirmName, setConfirmName] = useState("");
-    //const filesLatest = repository.commits[repository.commits.length - 1].files;
-    const filesLatest = [];
+    const filesLatest =
+        repository.commits.length !== 0
+            ? repository.commits[repository.commits.length - 1].files
+            : [];
 
     const sectionStyles = [styles.section];
     const topStyles = [styles.top];

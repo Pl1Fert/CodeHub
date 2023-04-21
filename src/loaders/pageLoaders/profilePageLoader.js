@@ -9,7 +9,7 @@ export const profilePageLoader = async () => {
     const pinnedRepositories = await pinnedRepositoriesLoader();
     const user = await userLoader();
 
-    if (!user || !pinnedRepositories) {
+    if (user.detail || pinnedRepositories.detail) {
         AuthService.logout();
         return redirect(APP_ROUTES.LOGIN);
     }
