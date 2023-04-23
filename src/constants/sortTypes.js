@@ -1,4 +1,11 @@
 export const SORT_TYPES = {
-    DESC: "desc",
-    ASC: "asc",
+    ALPHABET: {
+        DESC: "desc",
+        ASC: "asc",
+    },
+    PRIVACY: {
+        PRIVATE: "private",
+        PUBLIC: "public",
+        ALL: "all",
+    },
 };

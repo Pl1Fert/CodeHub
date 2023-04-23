@@ -15,9 +15,9 @@ export const RepositorySort = ({ sort, setSort }) => {
                     value="asc"
                     id={styles.radioButton1}
                     className={styles.radioButton}
-                    checked={sort === SORT_TYPES.ASC}
+                    checked={sort.alphabet === SORT_TYPES.ALPHABET.ASC}
                     onChange={() => {
-                        setSort(SORT_TYPES.ASC);
+                        setSort({ ...sort, alphabet: SORT_TYPES.ALPHABET.ASC });
                     }}
                 />
             </label>
@@ -27,13 +27,33 @@ export const RepositorySort = ({ sort, setSort }) => {
                     type="radio"
                     name="sort"
                     value="desc"
-                    checked={sort === SORT_TYPES.DESC}
+                    checked={sort.alphabet === SORT_TYPES.ALPHABET.DESC}
                     className={styles.radioButton}
                     id={styles.radioButton2}
                     onChange={() => {
-                        setSort(SORT_TYPES.DESC);
+                        setSort({ ...sort, alphabet: SORT_TYPES.ALPHABET.DESC });
                     }}
                 />
+            </label>
+            <label htmlFor="select" className={styles.container}>
+                privacy
+                <select
+                    name="select"
+                    id={styles.select}
+                    value={sort.privacy}
+                    onChange={(e) => {
+                        setSort({ ...sort, privacy: e.target.value });
+                    }}>
+                    <option value={SORT_TYPES.PRIVACY.ALL} key={1}>
+                        All
+                    </option>
+                    <option value={SORT_TYPES.PRIVACY.PUBLIC} key={2}>
+                        Public
+                    </option>
+                    <option value={SORT_TYPES.PRIVACY.PRIVATE} key={3}>
+                        Private
+                    </option>
+                </select>
             </label>
         </div>
     );
