@@ -1,7 +1,7 @@
 import React from "react";
 
 import { NAV_LINKS } from "../../constants/navLinks";
-import { NavItem } from "../navItem/navItem";
+import { NavItem } from "../navItem";
 
 import styles from "./navList.module.scss";
 

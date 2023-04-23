@@ -1,1 +1,1 @@
-export * from "./navitem";
+export * from "./navItem";
