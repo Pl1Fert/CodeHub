@@ -134,3 +134,25 @@ label {
 
     border-radius: 15px;
 }
+
+.formButton {
+    &:disabled {
+        opacity: 0.5;
+        cursor: default;
+
+        &:hover {
+            background-color: $blue;
+        }
+    }
+}
+
+.error {
+    font-size: 12px;
+    text-align: left;
+
+    color: $error-red;
+}
+
+.errorMessage {
+    color: $error-red;
+}

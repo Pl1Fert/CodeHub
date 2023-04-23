@@ -1,6 +1,10 @@
 import React from "react";
 import { Form, useLoaderData, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+
+import { repositoryEditSchema } from "../../validators";
 
 import styles from "./repositoryEditPage.module.scss";
 
@@ -22,26 +26,36 @@ export const RepositoryEditPage = () => {
         formInputStyles.push(styles.darkInput);
     }
 
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isValid },
+    } = useForm({ mode: "onBlur", resolver: yupResolver(repositoryEditSchema) });
+
     return (
         <section className={sectionStyles.join(" ")}>
-            <Form method="post" className={formStyles.join(" ")}>
-                <input type="hidden" defaultValue={repository.id} name="repositoryId" />
-                <input type="hidden" defaultValue={repository.owner} name="repositoryOwner" />
+            <Form method="post" className={formStyles.join(" ")} onSubmit={handleSubmit}>
+                <input type="hidden" defaultValue={repository.id} {...register("repositoryId")} />
+                <input
+                    type="hidden"
+                    defaultValue={repository.owner}
+                    {...register("repositoryOwner")}
+                />
                 <input
                     type="text"
-                    name="repositoryName"
+                    {...register("repositoryName")}
                     defaultValue={repository.repo_name}
                     placeholder="Repository"
                     className={formInputStyles.join(" ")}
-                    required={true}
-                    minLength={1}
-                    maxLength={50}
                 />
+                <div className={styles.error}>
+                    {errors?.repositoryName && <p>{errors?.repositoryName?.message || "Error!"}</p>}
+                </div>
                 <label htmlFor="repositoryType">
                     Private:
                     <input
                         type="checkbox"
-                        name="repositoryType"
+                        {...register("repositoryType")}
                         className={styles.formCheckbox}
                         defaultChecked={repository.is_private}
                     />
@@ -51,10 +65,14 @@ export const RepositoryEditPage = () => {
                         type="button"
                         onClick={() => navigate(-1)}
                         className={styles.formButton}
-                        id={styles.formButton1}>
+                        id={styles.formBackButton}>
                         Back
                     </button>
-                    <button type="submit" className={styles.formButton} id={styles.formButton2}>
+                    <button
+                        type="submit"
+                        className={styles.formButton}
+                        id={styles.formSubmitButton}
+                        disabled={!isValid}>
                         Save
                     </button>
                 </div>
