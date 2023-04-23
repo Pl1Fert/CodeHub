@@ -13,7 +13,10 @@ export const RepositoriesPage = () => {
     const { repositories } = useLoaderData();
     const navigation = useNavigation();
     const [filter, setFilter] = useState("");
-    const [sort, setSort] = useState(SORT_TYPES.ASC);
+    const [sort, setSort] = useState({
+        alphabet: SORT_TYPES.ALPHABET.ASC,
+        privacy: SORT_TYPES.PRIVACY.ALL,
+    });
 
     const [
         sectionStyles,

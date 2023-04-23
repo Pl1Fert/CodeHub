@@ -2,13 +2,13 @@ import { useMemo } from "react";
 
 import { SORT_TYPES } from "../constants";
 
-export const useSortedRepositories = (repositories, sort) => {
+export const useAlphabetSortedRepositories = (repositories, sort) => {
     const sortedRepositories = useMemo(() => {
         if (sort) {
             switch (sort) {
-                case SORT_TYPES.DESC:
+                case SORT_TYPES.ALPHABET.DESC:
                     return [...repositories].sort((a, b) => b.repo_name.localeCompare(a.repo_name));
-                case SORT_TYPES.ASC:
+                case SORT_TYPES.ALPHABET.ASC:
                     return [...repositories].sort((a, b) => a.repo_name.localeCompare(b.repo_name));
                 default:
                     break;
@@ -20,13 +20,35 @@ export const useSortedRepositories = (repositories, sort) => {
     return sortedRepositories;
 };
 
+export const usePrivacySortedRepositories = (repositories, sort) => {
+    const sortedRepositories = useMemo(() => {
+        if (sort) {
+            switch (sort) {
+                case SORT_TYPES.PRIVACY.PUBLIC:
+                    return [...repositories].filter((item) => !item.is_private);
+                case SORT_TYPES.PRIVACY.PRIVATE:
+                    return [...repositories].filter((item) => item.is_private);
+                default:
+                    break;
+            }
+        }
+        return repositories;
+    }, [sort, repositories]);
+
+    return sortedRepositories;
+};
+
 export const useRepositories = (repositories, filter, sort) => {
-    const sortedRepositories = useSortedRepositories(repositories, sort);
+    const alphabetSortedRepositories = useAlphabetSortedRepositories(repositories, sort.alphabet);
+    const privacySortedRepositories = usePrivacySortedRepositories(
+        alphabetSortedRepositories,
+        sort.privacy
+    );
     const filteredRepositories = useMemo(() => {
-        return sortedRepositories.filter((repository) =>
+        return privacySortedRepositories.filter((repository) =>
             repository.repo_name.toLowerCase().includes(filter.toLowerCase())
         );
-    }, [sortedRepositories, filter]);
+    }, [privacySortedRepositories, filter]);
 
     return filteredRepositories;
 };
