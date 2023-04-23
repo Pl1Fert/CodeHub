@@ -1,1 +1,63 @@
-.FilePage {}
+@import "../../styles/colors";
+
+.section {
+    padding: 30px 20px;
+}
+
+.fileDataContainer {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 2px solid $blue;
+    padding: 20px 20px;
+
+    white-space: pre-wrap;
+
+    border-radius: 15px;
+    background-color: $very-light-gray;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    gap: 5vw;
+}
+
+.darkTheme {
+    background-color: $dark-theme-bg;
+    color: $white;
+    border-color: $gray !important;
+}
+
+.button {
+    border: none;
+    padding: 10px 30px;
+
+    font: inherit;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    border-radius: 20px;
+    background-color: $blue;
+    color: $white;
+
+    cursor: pointer;
+    transition: all 0.3s linear;
+
+    &:hover {
+        background-color: $light-blue;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: default;
+
+        &:hover {
+            background-color: $blue;
+        }
+    }
+}
+
+#backButton {
+    padding: 10px 35px;
+}

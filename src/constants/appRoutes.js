@@ -8,6 +8,6 @@ export const APP_ROUTES = {
     REPOSITORY_EDIT: "repositories/:name/:id/edit",
     NOT_FOUND: "*",
     EDIT: "edit",
-    FILE: "files/:id",
+    FILE: "files/:name/:id",
     FILES: "files/",
 };
