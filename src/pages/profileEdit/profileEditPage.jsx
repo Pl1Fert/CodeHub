@@ -8,14 +8,18 @@ export const ProfileEditPage = () => {
     const { darkMode } = useSelector((state) => state.mode);
     const { user } = useLoaderData();
     const navigate = useNavigate();
-    const formInputStyles = [styles.formInput];
-    const sectionStyles = [styles.section];
-    const formStyles = [styles.form];
+
+    const [sectionStyles, formInputStyles, formStyles] = [
+        [styles.section],
+        [styles.formInput],
+        [styles.form],
+    ];
+
+    const stylesArray = [sectionStyles, formStyles];
 
     if (darkMode === true) {
+        stylesArray.map((item) => item.push(styles.darkTheme));
         formInputStyles.push(styles.darkInput);
-        sectionStyles.push(styles.darkTheme);
-        formStyles.push(styles.darkTheme);
     }
 
     return (

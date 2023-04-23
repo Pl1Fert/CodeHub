@@ -26,5 +26,7 @@ export const editRepositoryAction = async ({ request }) => {
 
     const repository = await RepositoriesService.editRepository(editedRepository, id);
 
-    return redirect(`/${APP_ROUTES.REPOSITORIES}/${repository.repo_name}/${repository.id}`);
+    return redirect(
+        `${APP_ROUTES.HOME}${APP_ROUTES.REPOSITORIES}/${repository.repo_name}/${repository.id}`
+    );
 };

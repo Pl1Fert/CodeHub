@@ -9,7 +9,7 @@ export const repositoryEditPageLoader = async ({ params }) => {
 
     if (repository.detail) {
         AuthService.logout();
-        return redirect(APP_ROUTES.LOGIN);
+        return redirect(APP_ROUTES.HOME + APP_ROUTES.LOGIN);
     }
 
     return { repository };

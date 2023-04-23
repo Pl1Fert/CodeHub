@@ -4,7 +4,7 @@ import { Form, useLoaderData, useNavigation } from "react-router-dom";
 
 import { RepositoryFilter, RepositoryList, RepositorySort } from "../../components";
 import { useRepositories } from "../../hooks";
-import { SORT_TYPES } from "../../constants";
+import { PAGES, SORT_TYPES } from "../../constants";
 
 import styles from "./repositoriesPage.module.scss";
 
@@ -15,18 +15,26 @@ export const RepositoriesPage = () => {
     const [filter, setFilter] = useState("");
     const [sort, setSort] = useState(SORT_TYPES.ASC);
 
-    const sectionStyles = [styles.section];
-    const asideStyles = [styles.aside];
-    const repositoryItemStyles = [styles.repositoryItem];
-    const mainStyles = [styles.main];
-    const filterInputStyles = [styles.filterInput];
-    const formInputStyles = [styles.formInput];
+    const [
+        sectionStyles,
+        asideStyles,
+        repositoryItemStyles,
+        mainStyles,
+        filterInputStyles,
+        formInputStyles,
+    ] = [
+        [styles.section],
+        [styles.aside],
+        [styles.repositoryItem],
+        [styles.main],
+        [styles.filterInput],
+        [styles.formInput],
+    ];
+
+    const stylesArray = [sectionStyles, asideStyles, repositoryItemStyles, mainStyles];
 
     if (darkMode === true) {
-        sectionStyles.push(styles.darkTheme);
-        asideStyles.push(styles.darkTheme);
-        mainStyles.push(styles.darkTheme);
-        repositoryItemStyles.push(styles.darkTheme);
+        stylesArray.map((item) => item.push(styles.darkTheme));
         filterInputStyles.push(styles.darkInput);
         formInputStyles.push(styles.darkInput);
     }
@@ -73,7 +81,7 @@ export const RepositoriesPage = () => {
                     classNameList={styles.repositoryList}
                     classNameItem={repositoryItemStyles.join(" ")}
                     repositories={filteredRepositories}
-                    page={"repositories"}
+                    page={PAGES.REPOSITORIES}
                 />
             </main>
         </section>

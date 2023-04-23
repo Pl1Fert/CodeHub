@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { APP_ROUTES } from "../../constants";
+import { APP_ROUTES, PAGES } from "../../constants";
 import { RepositoriesService } from "../../services";
 
 import starImg from "../../assets/star.png";
@@ -14,8 +14,8 @@ export const RepositoryItem = ({ className, page, repository }) => {
     const { darkMode } = useSelector((state) => state.mode);
     const [favoriteRep, setFavoriteRep] = useState(false);
     const linkStyles = [styles.repositoryLink];
-    const pagesForRepoType = ["repositories", "profile"];
-    const pagesForStar = ["repositories"];
+    const pagesForRepoType = [PAGES.REPOSITORIES, PAGES.PROFILE];
+    const pagesForStar = [PAGES.REPOSITORIES];
 
     darkMode ? linkStyles.push(styles.repositoryLink_dark) : null;
 
@@ -28,7 +28,7 @@ export const RepositoryItem = ({ className, page, repository }) => {
         <div className={className}>
             <div className={styles.description}>
                 <Link
-                    to={`/${APP_ROUTES.REPOSITORIES}/${repository.repo_name}/${repository.id}`}
+                    to={`${APP_ROUTES.HOME}${APP_ROUTES.REPOSITORIES}/${repository.repo_name}/${repository.id}`}
                     className={linkStyles.join(" ")}>
                     {repository.repo_name}
                 </Link>

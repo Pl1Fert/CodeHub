@@ -19,18 +19,19 @@ export const RepositoryPage = () => {
             ? repository.commits[repository.commits.length - 1].files
             : [];
 
-    const sectionStyles = [styles.section];
-    const topStyles = [styles.top];
-    const asideStyles = [styles.aside];
-    const mainStyles = [styles.main];
-    const editButtonStyles = [styles.repositoryEditButton];
-    const inputStyles = [styles.input];
+    const [sectionStyles, asideStyles, topStyles, mainStyles, editButtonStyles, inputStyles] = [
+        [styles.section],
+        [styles.aside],
+        [styles.top],
+        [styles.main],
+        [styles.repositoryEditButton],
+        [styles.input],
+    ];
+
+    const stylesArray = [sectionStyles, asideStyles, topStyles, mainStyles];
 
     if (darkMode === true) {
-        topStyles.push(styles.darkTheme);
-        sectionStyles.push(styles.darkTheme);
-        asideStyles.push(styles.darkTheme);
-        mainStyles.push(styles.darkTheme);
+        stylesArray.map((item) => item.push(styles.darkTheme));
         inputStyles.push(styles.darkInput);
         editButtonStyles.push(styles.repositoryEditButton_darkButton);
     }

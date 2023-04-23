@@ -12,13 +12,16 @@ export const HomePage = () => {
     const { repositories } = useLoaderData();
     const [filter, setFilter] = useState("");
 
-    const sectionStyles = [styles.section];
-    const asideStyles = [styles.aside];
-    const filterInputStyles = [styles.filterInput];
+    const [sectionStyles, asideStyles, filterInputStyles] = [
+        [styles.section],
+        [styles.aside],
+        [styles.filterInput],
+    ];
+
+    const stylesArray = [sectionStyles, asideStyles];
 
     if (darkMode === true) {
-        sectionStyles.push(styles.darkTheme);
-        asideStyles.push(styles.darkTheme);
+        stylesArray.map((item) => item.push(styles.darkTheme));
         filterInputStyles.push(styles.darkInput);
     }
 

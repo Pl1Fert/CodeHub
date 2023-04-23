@@ -5,7 +5,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { RepositoryList } from "../../components";
 import noPhotoImg from "../../assets/no_photo.png";
 import editImg from "../../assets/edit_icon.svg";
-import { APP_ROUTES } from "../../constants";
+import { APP_ROUTES, PAGES } from "../../constants";
 
 import styles from "./profilePage.module.scss";
 
@@ -13,17 +13,18 @@ export const ProfilePage = () => {
     const { darkMode } = useSelector((state) => state.mode);
     const { user, pinnedRepositories } = useLoaderData();
 
-    const sectionStyles = [styles.section];
-    const asideStyles = [styles.aside];
-    const repositoryItemStyles = [styles.repositoryItem];
-    const mainStyles = [styles.main];
-    const editButtonStyles = [styles.profileEditButton];
+    const [sectionStyles, asideStyles, repositoryItemStyles, mainStyles, editButtonStyles] = [
+        [styles.section],
+        [styles.aside],
+        [styles.repositoryItem],
+        [styles.main],
+        [styles.profileEditButton],
+    ];
+
+    const stylesArray = [sectionStyles, asideStyles, repositoryItemStyles, mainStyles];
 
     if (darkMode === true) {
-        sectionStyles.push(styles.darkTheme);
-        asideStyles.push(styles.darkTheme);
-        mainStyles.push(styles.darkTheme);
-        repositoryItemStyles.push(styles.darkTheme);
+        stylesArray.map((item) => item.push(styles.darkTheme));
         editButtonStyles.push(styles.profileEditButton_darkButton);
     }
 
@@ -50,7 +51,7 @@ export const ProfilePage = () => {
                     classNameList={styles.repositoryList}
                     classNameItem={repositoryItemStyles.join(" ")}
                     repositories={pinnedRepositories}
-                    page={"profile"}
+                    page={PAGES.PROFILE}
                 />
             </main>
         </section>

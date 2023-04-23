@@ -9,7 +9,7 @@ export const homePageLoader = async () => {
 
     if (repositories.detail) {
         AuthService.logout();
-        return redirect(APP_ROUTES.LOGIN);
+        return redirect(APP_ROUTES.HOME + APP_ROUTES.LOGIN);
     }
 
     return { repositories };

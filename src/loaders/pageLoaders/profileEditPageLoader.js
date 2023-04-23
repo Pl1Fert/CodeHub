@@ -9,7 +9,7 @@ export const profileEditPageLoader = async () => {
 
     if (user.detail) {
         AuthService.logout();
-        return redirect(APP_ROUTES.LOGIN);
+        return redirect(APP_ROUTES.HOME + APP_ROUTES.LOGIN);
     }
 
     return { user };

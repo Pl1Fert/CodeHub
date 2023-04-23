@@ -13,5 +13,5 @@ export const editUserAction = async ({ request }) => {
 
     await UserService.editUser(editedUser, userId);
 
-    return redirect(`/${APP_ROUTES.PROFILE}`);
+    return redirect(`${APP_ROUTES.HOME}${APP_ROUTES.PROFILE}`);
 };
