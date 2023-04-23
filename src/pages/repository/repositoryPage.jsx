@@ -42,7 +42,7 @@ export const RepositoryPage = () => {
                 <button
                     type="button"
                     onClick={() => {
-                        navigate(-1);
+                        navigate(APP_ROUTES.HOME + APP_ROUTES.REPOSITORIES);
                     }}
                     className={styles.button}
                     id={styles.backButton}>
