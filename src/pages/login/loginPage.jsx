@@ -140,9 +140,10 @@ export const LoginPage = () => {
                             )}
                         </div>
                         {/* TODO: need to clear after panel button click */}
-                        {auth.message !== "" && (
+                        {auth.registerMessage !== "" && (
                             <p className={styles.errorMessage}>
-                                {auth.message.charAt(0).toUpperCase() + auth.message.slice(1)}
+                                {auth.registerMessage.charAt(0).toUpperCase() +
+                                    auth.registerMessage.slice(1)}
                             </p>
                         )}
                         <input

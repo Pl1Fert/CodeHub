@@ -2,10 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import { AuthService } from "../../services";
 
-const tokens =
-    localStorage.getItem("tokens") !== undefined
+const getStorageItem = () => {
+    return localStorage.getItem("tokens") !== undefined
         ? JSON.parse(localStorage.getItem("tokens"))
         : null;
+};
+
+const tokens = getStorageItem();
 
 export const register = createAsyncThunk(
     "auth/register",
@@ -16,20 +19,21 @@ export const register = createAsyncThunk(
         } catch (e) {
             return thunkAPI.rejectWithValue();
         }
-    },
+    }
 );
 
 export const login = createAsyncThunk("auth/login", async ({ email, password }, thunkAPI) => {
     try {
-        await AuthService.login(email, password);
+        const data = await AuthService.login(email, password);
+        return data;
     } catch (e) {
         return thunkAPI.rejectWithValue();
     }
 });
 
 const initialState = tokens
-    ? { isLoggedIn: true, message: "" }
-    : { isLoggedIn: false, message: "" };
+    ? { isLoggedIn: true, registerMessage: "" }
+    : { isLoggedIn: false, registerMessage: "" };
 
 const authSlice = createSlice({
     name: "auth",
@@ -49,16 +53,16 @@ const authSlice = createSlice({
         },
         [register.fulfilled]: (state, action) => {
             state.isLoggedIn = false;
-            state.message = action.payload;
+            state.registerMessage = action.payload;
         },
         [register.rejected]: (state, action) => {
             state.isLoggedIn = false;
-            state.message = action.payload;
+            state.registerMessage = action.payload;
         },
     },
 });
 
-export const { reducer, actions } = authSlice;
+const { reducer, actions } = authSlice;
 
 export default reducer;
 

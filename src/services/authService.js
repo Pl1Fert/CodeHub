@@ -26,6 +26,13 @@ const login = async (email, password) => {
         password,
     });
 
+    switch (response.status) {
+        case 400:
+            throw new Error(response.status);
+        default:
+            break;
+    }
+
     if (!response.detail) {
         localStorage.setItem("tokens", JSON.stringify(response.data));
 
