@@ -75,6 +75,8 @@ export const RepositoryPage = () => {
                         type="button"
                         onClick={() => {
                             RepositoriesService.deleteRepository(repository.id);
+                            navigate(APP_ROUTES.HOME + APP_ROUTES.REPOSITORIES);
+                            location.reload();
                         }}
                         className={styles.button}
                         id={styles.deleteButton}
