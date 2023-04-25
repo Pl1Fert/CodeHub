@@ -2,6 +2,8 @@ import React from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+import { FileService } from "../../services";
+
 import styles from "./filePage.module.scss";
 
 export const FilePage = () => {
@@ -20,6 +22,8 @@ export const FilePage = () => {
         stylesArray.map((item) => item.push(styles.darkTheme));
     }
 
+    const isToHide = FileService.hideFileData(file.file_name);
+
     return (
         <section className={sectionStyles.join(" ")}>
             <div className={topStyles.join(" ")}>
@@ -35,7 +39,13 @@ export const FilePage = () => {
                 <h2 className={styles.fileTitle}>{file.file_name}</h2>
             </div>
             <div className={fileDataContainerStyles.join(" ")}>
-                <p>{data}</p>
+                {isToHide ? (
+                    <p style={{ textAlign: "center", marginTop: "40px" }}>
+                        Can&apos;t display file with this format
+                    </p>
+                ) : (
+                    <p>{data}</p>
+                )}
             </div>
         </section>
     );

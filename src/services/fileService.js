@@ -1,5 +1,5 @@
 import { axiosAPI } from "../api";
-import { API_URLS } from "../constants";
+import { API_URLS, RESTRICT_EXTENSIONS } from "../constants";
 
 const getFileData = async (id) => {
     const response = await axiosAPI.sendRequest(`${API_URLS.DATA}${id}`, "get");
@@ -13,4 +13,18 @@ const getFile = async (id) => {
     return response.data;
 };
 
-export const FileService = { getFileData, getFile };
+const hideFileData = (fileName) => {
+    const fileNameList = fileName.split(".");
+
+    if (RESTRICT_EXTENSIONS.includes(fileNameList[fileNameList.length - 1])) {
+        return true;
+    }
+
+    if (!fileNameList.includes(".")) {
+        return true;
+    }
+
+    return false;
+};
+
+export const FileService = { getFileData, getFile, hideFileData };
