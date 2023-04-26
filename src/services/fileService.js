@@ -14,13 +14,13 @@ const getFile = async (id) => {
 };
 
 const hideFileData = (fileName) => {
-    const fileNameList = fileName.split(".");
+    const fileNameList = fileName.toLowerCase().split(".");
 
     if (RESTRICT_EXTENSIONS.includes(fileNameList[fileNameList.length - 1])) {
         return true;
     }
 
-    if (!fileNameList.includes(".")) {
+    if (fileName.includes(".") === false) {
         return true;
     }
 

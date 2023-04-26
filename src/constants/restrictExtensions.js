@@ -1,5 +1,6 @@
 export const RESTRICT_EXTENSIONS = [
     "exe",
+    "out",
     "dll",
     "bin",
     "doc",

@@ -4,17 +4,14 @@ import { SORT_TYPES } from "../constants";
 
 export const useAlphabetSortedRepositories = (repositories, sort) => {
     const sortedRepositories = useMemo(() => {
-        if (sort) {
-            switch (sort) {
-                case SORT_TYPES.ALPHABET.DESC:
-                    return [...repositories].sort((a, b) => b.repo_name.localeCompare(a.repo_name));
-                case SORT_TYPES.ALPHABET.ASC:
-                    return [...repositories].sort((a, b) => a.repo_name.localeCompare(b.repo_name));
-                default:
-                    break;
-            }
+        switch (sort) {
+            case SORT_TYPES.ALPHABET.DESC:
+                return [...repositories].sort((a, b) => b.repo_name.localeCompare(a.repo_name));
+            case SORT_TYPES.ALPHABET.ASC:
+                return [...repositories].sort((a, b) => a.repo_name.localeCompare(b.repo_name));
+            default:
+                return repositories;
         }
-        return repositories;
     }, [sort, repositories]);
 
     return sortedRepositories;
@@ -22,23 +19,24 @@ export const useAlphabetSortedRepositories = (repositories, sort) => {
 
 export const usePrivacySortedRepositories = (repositories, sort) => {
     const sortedRepositories = useMemo(() => {
-        if (sort) {
-            switch (sort) {
-                case SORT_TYPES.PRIVACY.PUBLIC:
-                    return [...repositories].filter((item) => !item.is_private);
-                case SORT_TYPES.PRIVACY.PRIVATE:
-                    return [...repositories].filter((item) => item.is_private);
-                default:
-                    break;
-            }
+        switch (sort) {
+            case SORT_TYPES.PRIVACY.PUBLIC:
+                return [...repositories].filter((item) => !item.is_private);
+            case SORT_TYPES.PRIVACY.PRIVATE:
+                return [...repositories].filter((item) => item.is_private);
+            default:
+                return repositories;
         }
-        return repositories;
     }, [sort, repositories]);
 
     return sortedRepositories;
 };
 
-export const useRepositories = (repositories, filter, sort) => {
+export const useRepositories = (
+    repositories,
+    filter = "",
+    sort = { alphabet: SORT_TYPES.ALPHABET.ASC, privacy: SORT_TYPES.PRIVACY.ALL }
+) => {
     const alphabetSortedRepositories = useAlphabetSortedRepositories(repositories, sort.alphabet);
     const privacySortedRepositories = usePrivacySortedRepositories(
         alphabetSortedRepositories,

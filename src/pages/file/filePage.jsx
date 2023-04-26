@@ -40,9 +40,7 @@ export const FilePage = () => {
             </div>
             <div className={fileDataContainerStyles.join(" ")}>
                 {isToHide ? (
-                    <p style={{ textAlign: "center", marginTop: "40px" }}>
-                        Can&apos;t display file with this format
-                    </p>
+                    <p style={{ textAlign: "center" }}>Can&apos;t display file with this format</p>
                 ) : (
                     <p>{data}</p>
                 )}

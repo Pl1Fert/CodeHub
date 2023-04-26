@@ -21,10 +21,11 @@
 .aside {
     width: 40%;
     padding: 25px 20px;
+    height: 80vh;
 
     text-align: center;
 
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .title {
@@ -92,8 +93,11 @@
     width: 60%;
     padding: 25px 20px;
     border-right: 2px solid $blue;
+    height: 80vh;
 
     text-align: center;
+
+    overflow-y: scroll;
 }
 
 .top {
