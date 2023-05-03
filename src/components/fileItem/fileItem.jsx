@@ -17,7 +17,7 @@ export const FileItem = ({ file }) => {
     return (
         <div className={styles.fileItem}>
             <Link
-                to={`${APP_ROUTES.HOME}${APP_ROUTES.FILES}${file.file_name}/${file.id}`}
+                to={`${APP_ROUTES.HOME}${APP_ROUTES.FILES}${file.id}`}
                 className={linkStyles.join(" ")}>
                 {file.file_name}
             </Link>
