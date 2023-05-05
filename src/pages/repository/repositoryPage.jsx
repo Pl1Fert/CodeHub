@@ -17,7 +17,7 @@ export const RepositoryPage = () => {
 
     const findActiveFiles = (commits) => {
         const allFilesFromCommits = [];
-        let allFilesIds = [];
+        let allFilesNames = [];
         const filesLatest = [];
 
         for (let i = commits.length - 1; i >= 0; i--) {
@@ -25,19 +25,21 @@ export const RepositoryPage = () => {
         }
 
         for (let i = 0; i < allFilesFromCommits.length; i++) {
-            allFilesIds.push(allFilesFromCommits[i].id);
+            allFilesNames.push(allFilesFromCommits[i].file_name);
         }
 
-        allFilesIds = Array.from(new Set(allFilesIds));
+        allFilesNames = Array.from(new Set(allFilesNames));
 
         for (let i = commits.length - 1; i >= 0; i--) {
             for (let j = 0; j < commits[i].files.length; j++) {
-                if (allFilesIds.includes(commits[i].files[j].id)) {
+                if (allFilesNames.includes(commits[i].files[j].file_name)) {
                     if (commits[i].files[j].file_status !== 2) {
                         filesLatest.push(commits[i].files[j]);
                     }
 
-                    allFilesIds = allFilesIds.filter((n) => n !== commits[i].files[j].id);
+                    allFilesNames = allFilesNames.filter(
+                        (n) => n !== commits[i].files[j].file_name
+                    );
                 }
             }
         }
