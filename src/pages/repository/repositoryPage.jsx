@@ -14,10 +14,38 @@ export const RepositoryPage = () => {
     const { repository } = useLoaderData();
     const navigate = useNavigate();
     const [confirmName, setConfirmName] = useState("");
-    const filesLatest =
-        repository.commits.length !== 0
-            ? repository.commits[repository.commits.length - 1].files
-            : [];
+
+    const findActiveFiles = (commits) => {
+        const allFilesFromCommits = [];
+        let allFilesIds = [];
+        const filesLatest = [];
+
+        for (let i = commits.length - 1; i >= 0; i--) {
+            allFilesFromCommits.push(...commits[i].files);
+        }
+
+        for (let i = 0; i < allFilesFromCommits.length; i++) {
+            allFilesIds.push(allFilesFromCommits[i].id);
+        }
+
+        allFilesIds = Array.from(new Set(allFilesIds));
+
+        for (let i = commits.length - 1; i >= 0; i--) {
+            for (let j = 0; j < commits[i].files.length; j++) {
+                if (allFilesIds.includes(commits[i].files[j].id)) {
+                    if (commits[i].files[j].file_status !== 2) {
+                        filesLatest.push(commits[i].files[j]);
+                    }
+
+                    allFilesIds = allFilesIds.filter((n) => n !== commits[i].files[j].id);
+                }
+            }
+        }
+
+        return filesLatest;
+    };
+
+    const filesLatest = findActiveFiles(repository.commits);
 
     const [sectionStyles, asideStyles, topStyles, mainStyles, editButtonStyles, inputStyles] = [
         [styles.section],
