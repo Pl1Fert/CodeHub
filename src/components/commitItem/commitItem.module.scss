@@ -1,0 +1,31 @@
+@import "../../styles/colors";
+
+.commit {
+    width: 90%;
+    margin: 0 auto;
+    border: 2px solid $blue;
+    padding: 10px 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    border-radius: 15px;
+
+    &TopPart {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &BottomPart {
+        text-align: left;
+        word-wrap: break-word;
+    }
+}
+
+.darkTheme {
+    background-color: $dark-theme-bg;
+    color: $white;
+    border-color: $gray !important;
+}

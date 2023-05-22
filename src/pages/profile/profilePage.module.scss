@@ -1,0 +1,111 @@
+@import "../../styles/colors";
+
+.section {
+    min-height: 90.5vh;
+
+    display: flex;
+}
+
+.darkTheme {
+    background-color: $dark-theme-bg;
+    color: $white;
+    border-color: $gray !important;
+}
+
+.aside {
+    width: 20%;
+    padding: 40px 30px;
+}
+
+.main {
+    width: 80%;
+    padding: 40px 30px;
+    border-left: 2px solid $blue;
+
+    &Title {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    &Photo {
+        width: 100px;
+        height: 100px;
+    }
+
+    &PhotoWrapper {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 15px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+        background-color: $light-gray;
+    }
+
+    &EditButton {
+        border: 1px solid transparent;
+        margin-top: 10px;
+        padding: 5px;
+        border-radius: 5px;
+
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        outline: none;
+        background-color: transparent;
+
+        cursor: pointer;
+        transition: all 0.3s linear;
+
+        &:hover {
+            border-color: $blue;
+        }
+
+        &_darkButton {
+            color: $white;
+
+            &:hover {
+                border-color: $gray;
+            }
+        }
+    }
+
+    &EditImg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.repositoryList {
+    width: 70%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.repositoryItem {
+    width: 49%;
+    border: 2px solid $blue;
+    padding: 20px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: 15px;
+}

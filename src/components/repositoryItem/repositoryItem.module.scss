@@ -1,0 +1,56 @@
+@import "../../styles/colors";
+
+.repositoryLink {
+    padding-bottom: 1px;
+    border-bottom: 2px solid transparent;
+
+    color: $blue-font;
+
+    transition: all 0.3s linear;
+
+    &:hover {
+        border-color: $blue;
+    }
+
+    &:visited {
+        color: $blue-font;
+    }
+
+    &_dark {
+        color: $white;
+
+        &:visited {
+            color: $white;
+        }
+
+        &:hover {
+            border-color: $white;
+        }
+    }
+}
+
+.repositoryType {
+    font-size: 13px;
+    font-weight: 500;
+
+    transition: all 0.3s linear;
+}
+
+.starImg {
+    width: 20px;
+    height: 20px;
+}
+
+.button {
+    border: none;
+
+    outline: none;
+    background-color: transparent;
+
+    cursor: pointer;
+}
+
+.description {
+    overflow: hidden;
+    max-width: 85%;
+}

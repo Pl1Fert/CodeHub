@@ -1,0 +1,101 @@
+@import "../../styles/colors";
+
+.section {
+    min-height: 91vh;
+    padding: 40px 0;
+}
+
+.darkTheme {
+    background-color: $dark-theme-bg;
+    color: $white;
+    border-color: $gray !important;
+}
+
+.form {
+    width: 400px;
+    height: 500px;
+    margin: 0 auto;
+    border: 2px solid $blue;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    border-radius: 20px;
+
+    &Input {
+        width: 100%;
+        padding: 15px 10px;
+        margin: 0 auto;
+        border: 2px solid $blue;
+
+        font: inherit;
+        font-size: 18px;
+
+        color: $blue;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    &Buttons {
+        margin-top: auto;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &Button {
+        width: 45%;
+        border: none;
+        padding: 10px 15px;
+
+        font: inherit;
+        font-weight: 500;
+        text-transform: uppercase;
+
+        border-radius: 20px;
+        background-color: $blue;
+        color: $white;
+
+        cursor: pointer;
+        transition: all 0.3s linear;
+
+        &:hover {
+            background-color: $light-blue;
+        }
+    }
+}
+
+.darkInput {
+    background-color: $dark-theme-bg-input;
+    color: $gray;
+    border-color: $gray !important;
+
+    &::placeholder {
+        color: $gray;
+    }
+}
+
+#formSubmitButton {
+    &:disabled {
+        opacity: 0.5;
+        cursor: default;
+
+        &:hover {
+            background-color: $blue;
+        }
+    }
+}
+
+.error {
+    font-size: 12px;
+    text-align: left;
+
+    color: $error-red;
+}
+
+.errorMessage {
+    color: $error-red;
+}

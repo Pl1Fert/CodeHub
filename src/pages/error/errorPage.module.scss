@@ -1,0 +1,24 @@
+@import "../../styles/colors";
+
+.container {
+    width: 500px;
+    height: 500px;
+    margin: calc(50vh - 250px) auto 0;
+}
+
+.sectionInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.title {
+    margin-top: 20px;
+
+    font-size: 40px;
+
+    color: $dark-blue-font;
+}

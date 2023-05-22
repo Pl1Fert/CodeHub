@@ -1,0 +1,60 @@
+@import "../../styles/colors";
+
+.section {
+    min-height: 90.5vh;
+    display: flex;
+}
+
+.darkTheme {
+    background-color: $dark-theme-bg;
+    color: $white;
+    border-color: $gray !important;
+}
+
+.aside {
+    width: 15%;
+    border-right: 2px solid $blue;
+    padding: 30px 25px 10px;
+
+    text-align: center;
+    overflow-y: hidden;
+}
+
+.main {
+    width: 85%;
+    padding: 30px 30px 10px 30px;
+}
+
+.repositoryList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    text-align: left;
+    overflow: hidden;
+}
+
+.filterInput {
+    width: 100%;
+    padding: 3px 10px;
+    margin: 10px 0 20px;
+    border: 2px solid $blue;
+
+    font: inherit;
+    font-size: 15px;
+
+    color: $blue;
+
+    border-radius: 5px;
+    outline: none;
+}
+
+.darkInput {
+    background-color: $dark-theme-bg-input;
+    color: $gray;
+    border-color: $gray !important;
+
+    &::placeholder {
+        color: $gray;
+    }
+}
