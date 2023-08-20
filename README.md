@@ -1,7 +1,7 @@
 # CodeHub
 **CodeHub** is a git-like version control system. 
 
-Stack: React, React Router, React Hook Form, Axios, SCSS Modules, Vite, ESlint, yup
+Stack: React, RTK, React Router, React Hook Form, Axios, SCSS Modules, Vite, ESlint, yup
 
 ## Features
 Using CodeHub you can use key features of `git` such as:
